@@ -1,0 +1,72 @@
+{
+  "catering": {
+    "layoutType": "layout-catering",
+    "badgeText": "Sushi King Catering",
+    "title": "Submit a Catering Request",
+    "description": "Please send us your event details via email. Written details ensure our kitchen arranges your premium platter volumes with absolute precision.",
+    "metaText": "Our coordinators review email submissions daily and respond within 24 hours.",
+    "actions": [
+      {
+        "id": "act-email",
+        "type": "row-item",
+        "icon": "✉️",
+        "label": "Email Catering Inquiry",
+        "sublabel": "Click to open pre-formatted form template",
+        "link": "mailto:sushiking@gmail.com?subject=Catering%20Inquiry%20-%20Sushi%20King&body=Thank%20you%20for%20choosing%20Sushi%20King!%20Please%20fill%20out%20the%20details%20below%20so%20we%20can%20build%20your%20quote%3A%0A%0A-%20Full%20Name%3A%0A-%20Phone%20Number%3A%0A-%20Date%20%26%20Time%20of%20Event%3A%0A-%20Estimated%20Guest%20Count%3A%0A-%20Any%20Dietary%20Restrictions/Allergies%3A"
+      },
+      {
+        "id": "act-phone",
+        "type": "row-item",
+        "icon": "📞",
+        "label": "Call General Lines",
+        "sublabel": "(248) 266-2003 (Secondary Option)",
+        "link": "tel:+12482662003"
+      }
+    ]
+  },
+  "newsletter": {
+    "layoutType": "layout-newsletter",
+    "badgeText": "The Royalty Club",
+    "title": "Unlock VIP Perks",
+    "description": "Subscribe to our exclusive mailing list for private event invitations, seasonal chef menu reveals, and birthday promotions.",
+    "metaText": "We value your privacy. Opt-out at any time with a single click.",
+    "actions": [
+      {
+        "id": "act-subscribe",
+        "type": "inline-form",
+        "placeholder": "Enter your email address...",
+        "label": "Join Ranks"
+      }
+    ]
+  },
+  "flashSale": {
+    "layoutType": "layout-promo",
+    "badgeText": "Limited Weekend Special",
+    "title": "20% OFF SIGNATURE ROLLS",
+    "description": "Savor premium luxury for less. Enjoy 20% off all Master Chef Special rolls ordered online this Friday through Sunday night.",
+    "metaText": "*Valid on live online processing streams only.",
+    "actions": [
+      {
+        "id": "act-promo-link",
+        "type": "promo-cta",
+        "label": "Claim Offer Now",
+        "link": "menu.html"
+      }
+    ]
+  },
+  "hoursAlert": {
+    "layoutType": "layout-alert",
+    "badgeText": "Schedule Alert",
+    "title": "Holiday Closure Notice",
+    "description": "In observance of the upcoming national holiday, our kitchen and dining spaces will remain completely closed on Thursday, July 4th.",
+    "metaText": "",
+    "actions": [
+      {
+        "id": "act-dismiss",
+        "type": "dismiss-btn",
+        "label": "Acknowledge Notice",
+        "link": "#"
+      }
+    ]
+  }
+}

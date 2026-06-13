@@ -227,3 +227,136 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { passive: false });
     }
 });
+
+// ==========================================================================
+// UNIVERSAL ABSTRACT MODAL ENGINE
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('universal-modal');
+    const container = document.getElementById('uni-modal-runtime-content');
+    const wrapper = overlay?.querySelector('.uni-modal-wrapper');
+    const closeBtn = document.getElementById('close-uni-modal');
+
+    let modalDatabase = null;
+
+    if (!overlay || !container || !wrapper || !closeBtn) return;
+
+    // 1. Fetch dynamic config JSON blueprint architecture
+    fetch('modal-config.json')
+        .then(res => { if (!res.ok) throw new Error(); return res.json(); })
+        .then(data => { 
+            modalDatabase = data; 
+            // Optional: Uncomment the line below to test an unprompted automated popup notice
+            // initiateSystemTriggers('flashSale', 4000);
+        })
+        .catch(err => console.error('Dynamic Modal Engine failed to fetch database config profile:', err));
+
+    // 2. Abstract Action Component Generator Matrix
+    const renderActionButtons = (actions, elevatedId) => {
+        if (!actions || !actions.length) return '';
+        
+        return actions.map(act => {
+            // ELEMENT CLASS A: Option Rows Layout Schema (Catering Model)
+            if (act.type === 'row-item') {
+                const isElevated = (act.id === elevatedId);
+                const visualClass = isElevated ? 'accented' : 'neutral';
+
+                return `
+                    <a href="${act.link}" class="modal-row-link ${visualClass}">
+                        <span class="modal-row-icon">${act.icon || '🔗'}</span>
+                        <div class="modal-row-text">
+                            <strong>${act.label}</strong>
+                            <span>${act.sublabel || ''}</span>
+                        </div>
+                    </a>
+                `;
+            }
+
+            // ELEMENT CLASS B: Horizontal Newsletter Inline Form Layout Schema
+            if (act.type === 'inline-form') {
+                return `
+                    <form class="modal-inline-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); window.UniversalModalEngine.close();">
+                        <input type="email" placeholder="${act.placeholder}" required class="modal-form-input">
+                        <button type="submit" class="modal-form-btn">${act.label}</button>
+                    </form>
+                `;
+            }
+
+            // ELEMENT CLASS C: Large Standard Call to Action Block Layout Schema
+            if (act.type === 'promo-cta') {
+                return `<a href="${act.link}" class="modal-promo-cta">${act.label}</a>`;
+            }
+
+            // ELEMENT CLASS D: Generic Direct Close Dismiss Button
+            if (act.type === 'dismiss-btn') {
+                return `<button class="modal-dismiss-btn" onclick="window.UniversalModalEngine.close()">${act.label}</button>`;
+            }
+            return '';
+        }).join('');
+    };
+
+    // 3. Global Window Control API Exposure Vector
+    window.UniversalModalEngine = {
+        open: (type, elevatedId = null) => {
+            if (!modalDatabase || !modalDatabase[type]) {
+                console.warn(`Modal Engine Error: Requested config type token "${type}" does not exist inside JSON registry.`);
+                return;
+            }
+
+            const profile = modalDatabase[type];
+
+            // Attach specific unique class look modifier pattern to wrapper box
+            wrapper.className = 'uni-modal-wrapper ' + profile.layoutType;
+            
+            // Re-render HTML nodes inside memory instantly
+            container.innerHTML = `
+                <span class="modal-dynamic-badge">${profile.badgeText}</span>
+                <h3 class="modal-dynamic-title">${profile.title}</h3>
+                <p class="modal-dynamic-desc">${profile.description}</p>
+                
+                <div class="modal-action-wrapper-container">
+                    ${renderActionButtons(profile.actions, elevatedId)}
+                </div>
+                
+                ${profile.metaText ? `<span class="uni-modal-meta-text">${profile.metaText}</span>` : ''}
+            `;
+            
+            // Paint layout visible
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // Freeze frame scroll positioning
+        },
+        close: () => {
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            setTimeout(() => { container.innerHTML = ''; }, 300); // Flush cache variables after exit animations end
+        }
+    };
+
+    // 4. Global Event Handlers Delegation Loop
+    document.body.addEventListener('click', (e) => {
+        const targetBtn = e.target.closest('[data-modal-target]');
+        if (targetBtn) {
+            e.preventDefault();
+            const targetTypeToken = targetBtn.getAttribute('data-modal-target');
+            const targetElevationId = targetBtn.getAttribute('data-modal-elevate');
+            
+            window.UniversalModalEngine.open(targetTypeToken, targetElevationId);
+        }
+    });
+
+    // Implicit System Timer Configuration Engine Utility
+    function initiateSystemTriggers(typeToken, delay) {
+        setTimeout(() => {
+            if (!overlay.classList.contains('active')) {
+                window.UniversalModalEngine.open(typeToken);
+            }
+        }, delay);
+    }
+
+    // Dismissal triggers wire-ups
+    closeBtn.addEventListener('click', window.UniversalModalEngine.close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) window.UniversalModalEngine.close(); });
+});

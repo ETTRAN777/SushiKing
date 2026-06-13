@@ -215,6 +215,11 @@ nav a:hover {
     border-radius: 4px;
     transition: all 0.3s ease;
     font-family: var(--font-body);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Adjust your top/bottom padding to be completely equal, or use line-height: 1 */
+    padding: 0.8rem 2rem;
 }
 
 .hero-btn.primary {
@@ -1433,3 +1438,422 @@ header.force-scrolled {
     color: var(--brand-red);
 }
 
+/* ==========================================================================
+   CATERING HERO PROFILE
+   ========================================================================== */
+.catering-section {
+    position: relative;
+    width: 100%;
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 8%;
+    overflow: hidden;
+
+    /* Image Background - Upload your image to your assets folder with this name */
+    background-image: url('assets/catering-hero-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.catering-overlay-dim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Heavy cinematic fade to preserve light text legibility over any bright plate images */
+    background: linear-gradient(to bottom, rgba(7, 7, 8, 0.7) 0%, rgba(7, 7, 8, 0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.catering-inner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.catering-pre-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--brand-red);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1.2rem;
+    font-family: var(--font-body);
+}
+
+.catering-inner-content h2 {
+    font-size: 4rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    color: var(--text-white);
+}
+
+.catering-accent-line {
+    width: 45px;
+    height: 3px;
+    background: var(--brand-red);
+    margin: 1.5rem auto;
+}
+
+.catering-inner-content p {
+    font-size: 1.05rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.6;
+    font-family: var(--font-body);
+}
+
+.catering-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+    .catering-section {
+        padding: 4rem 1.5rem;
+        min-height: auto;
+    }
+
+    .catering-inner-content h2 {
+        font-size: 2.85rem;
+    }
+
+    .catering-btn-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .catering-btn-group .hero-btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   UNIVERSAL ABSTRACT MODAL ENGINE - CORE CUSTOM STYLING OVERLAYS
+   ========================================================================== */
+
+.uni-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 4, 5, 0.85); 
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.uni-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Base modal card structure */
+.uni-modal-wrapper {
+    position: relative;
+    background: #0d0d0f; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 8px;
+    padding: 3.5rem 2.5rem 2.5rem 2.5rem; 
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    width: 90%;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.uni-modal-overlay.active .uni-modal-wrapper {
+    transform: scale(1) translateY(0);
+}
+
+/* Minimalist close cross design */
+#close-uni-modal {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 1.5rem;
+    font-weight: 200;
+    line-height: 1;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+}
+
+#close-uni-modal:hover {
+    color: var(--text-white, #ffffff);
+    background: rgba(255, 255, 255, 0.05);
+    transform: rotate(90deg);
+}
+
+/* Content Elements Typography Tuning */
+.modal-dynamic-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--brand-red, #dc2626);
+    margin-bottom: 0.6rem;
+}
+
+/* Fixed display compression tracking bounds */
+.modal-dynamic-title {
+    font-family: var(--font-display, 'Bebas Neue', sans-serif);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; 
+    line-height: 1.15;
+    color: var(--text-white, #ffffff);
+    margin-bottom: 0.8rem;
+}
+
+.modal-dynamic-desc {
+    font-size: 0.95rem;
+    color: var(--text-gray, #bbbdc4);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   LOOK 1: Specific Layout Context Handling Rules (Catering Layout Context)
+   ========================================================================== */
+.layout-catering {
+    max-width: 480px;
+}
+
+.layout-catering .modal-action-wrapper-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Stripped out emojis via rendering layers */
+.modal-row-icon {
+    display: none !important;
+}
+
+.modal-row-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 1.1rem 1.4rem;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+}
+
+/* Email Prominence Styling */
+.layout-catering .modal-row-link.accented {
+    background: var(--brand-red, #dc2626);
+    color: #ffffff;
+}
+
+.layout-catering .modal-row-link.accented:hover {
+    background: var(--brand-red-hover, #b91c1c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+}
+
+/* Neutral Link Layout Options */
+.layout-catering .modal-row-link.neutral {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-white, #ffffff);
+}
+
+.layout-catering .modal-row-link.neutral:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.modal-row-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-row-text strong {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.modal-row-text span {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.15rem;
+}
+
+.uni-modal-meta-text {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 1.5rem;
+    line-height: 1.4;
+}
+
+
+/* LOOK 2: Modern VIP Input Newsletter Layout Schema */
+.layout-newsletter {
+    max-width: 540px;
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    border-top: 4px solid #ffffff;
+}
+
+.layout-newsletter h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.layout-newsletter .modal-inline-form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.layout-newsletter .modal-form-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem;
+    color: #ffffff;
+    font-family: var(--font-body);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.layout-newsletter .modal-form-input:focus {
+    border-color: #ffffff;
+    outline: none;
+}
+
+.layout-newsletter .modal-form-btn {
+    background: #ffffff;
+    color: #070708;
+    padding: 0 1.75rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    transition: opacity 0.2s;
+}
+
+.layout-newsletter .modal-form-btn:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   LOOK 3: Special Promotional Campaign Dashboard (FlashSale Layout Tuning)
+   ========================================================================== */
+.layout-promo {
+    max-width: 480px;
+    text-align: center;
+    padding: 3.5rem 2.5rem 2.5rem 2.5rem;
+}
+
+.layout-promo .modal-dynamic-title {
+    text-shadow: 0 4px 30px rgba(220, 38, 38, 0.15);
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+}
+
+.layout-promo .modal-dynamic-desc {
+    font-size: 0.95rem;
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+    color: #d4d4d8;
+    line-height: 1.6;
+}
+
+/* Primary Call-to-Action Link Element Styling */
+.layout-promo .modal-promo-cta {
+    display: inline-block;
+    background: var(--brand-red, #dc2626);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.12em; 
+    padding: 1.15rem 2.5rem;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+}
+
+.layout-promo .modal-promo-cta:hover {
+    background: var(--brand-red-hover, #b91c1c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
+/* LOOK 4: Critical Interface Announcement Layout Schema (HoursAlert) */
+.layout-alert {
+    max-width: 420px;
+    padding: 2.25rem 2rem;
+    text-align: center;
+    border: 1px solid #f59e0b;
+}
+
+.layout-alert .modal-dynamic-badge {
+    color: #f59e0b;
+}
+
+.layout-alert h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.layout-alert .modal-dismiss-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.layout-alert .modal-dismiss-btn:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: #f59e0b;
+}
