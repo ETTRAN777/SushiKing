@@ -45,6 +45,11 @@
     "title": "20% OFF SIGNATURE ROLLS",
     "description": "Savor premium luxury for less. Enjoy 20% off all Master Chef Special rolls ordered online this Friday through Sunday night.",
     "metaText": "*Valid on live online processing streams only.",
+    "autoTrigger": {
+      "firingOrder": 2,
+      "delay": 1500,
+      "cookieMaxAge": 86400
+    },
     "actions": [
       {
         "id": "act-promo-link",
@@ -60,6 +65,11 @@
     "title": "Holiday Closure Notice",
     "description": "In observance of the upcoming national holiday, our kitchen and dining spaces will remain completely closed on Thursday, July 4th.",
     "metaText": "",
+    "autoTrigger": {
+      "firingOrder": 1,
+      "delay": 500,
+      "cookieMaxAge": 3600
+    },
     "actions": [
       {
         "id": "act-dismiss",

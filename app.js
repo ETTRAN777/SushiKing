@@ -1,3 +1,7 @@
+// Bump this string to invalidate all auto-modal cookies site-wide (e.g. when pushing a new promo).
+// Format: 'vN' — e.g. 'v1', 'v2', 'v3'
+const APP_VERSION = 'v2';
+
 // Global Selectors across both pages
 const navbar = document.getElementById('navbar');
 const menuToggle = document.getElementById('menu-toggle');
@@ -136,18 +140,27 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // 2. Generate standard food item cards loop
-            let itemsMarkup = currentData.items.map(item => `
+            let itemsMarkup = currentData.items.map(item => {
+                // Use the cart-sync helper if available so a card that's already
+                // in the basket renders with its [ - qty + ] stepper + trash icon
+                // instead of resetting back to "+ Add" on every tab switch.
+                const controlMarkup = (typeof window.getMenuItemControlMarkup === 'function')
+                    ? window.getMenuItemControlMarkup(item.name, item.price)
+                    : `<button class="add-to-cart-btn" data-name="${item.name}" data-price="${item.price}">+ Add</button>`;
+
+                return `
         <div class="menu-card animate-fade-in">
             <div class="menu-card-header">
                 <h3>${item.name}</h3>
-                <div class="menu-item-info-row">
-                <button class="add-to-cart-btn" data-name="${item.name}" data-price="${item.price}">+ Add</button>
+                <div class="menu-item-info-row" data-item-name="${item.name}" data-item-price="${item.price}">
+                ${controlMarkup}
             </div>
         </div>
             ${item.description ? `<p class="menu-item-description">${item.description}</p>` : '<br><br>'}
             <span class="price-tag">$${item.price.toFixed(2)}</span>
         </div>
-    `).join('');
+    `;
+            }).join('');
 
             // 3. Append selection pool grids if present (e.g., special roll lists)
             if (currentData.selectionList) {
@@ -247,10 +260,77 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => { if (!res.ok) throw new Error(); return res.json(); })
         .then(data => { 
             modalDatabase = data; 
-            // Optional: Uncomment the line below to test an unprompted automated popup notice
-            // initiateSystemTriggers('flashSale', 4000);
+            
+            // Helper utility to read a specific cookie value by its key name
+            const getCookie = (name) => {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            };
+
+            // 🚀 AUTO-MODAL QUEUE BUILDER
+            // Collects all [data-auto-modal] markers on the page, cross-references
+            // each against the config database, filters out already-seen modals,
+            // then sorts by firingOrder (lowest first) to build a priority queue.
+            const autoModalMarkers = document.querySelectorAll('[data-auto-modal]');
+
+            const autoQueue = Array.from(autoModalMarkers)
+                .map(marker => {
+                    const typeToken = marker.getAttribute('data-auto-modal');
+                    const config = modalDatabase[typeToken];
+
+                    // Skip if no config entry or no autoTrigger block defined
+                    if (!config || !config.autoTrigger) return null;
+
+                    const seenVersion = getCookie(`promo_shown_${typeToken}`);
+                    const isSuppressed = seenVersion === APP_VERSION;
+
+                    // Skip if user has already seen this version
+                    if (isSuppressed) return null;
+
+                    return {
+                        typeToken,
+                        firingOrder: config.autoTrigger.firingOrder ?? 99,
+                        delay: config.autoTrigger.delay ?? 1500,
+                        cookieMaxAge: config.autoTrigger.cookieMaxAge ?? 86400
+                    };
+                })
+                .filter(Boolean)
+                .sort((a, b) => a.firingOrder - b.firingOrder);
+
+            // Kick off the queue — each modal fires its own delay after the previous
+            // one is dismissed. The queue reference is stored on window so close()
+            // can advance it after each dismissal.
+            window._autoModalQueue = autoQueue;
+            window._autoModalQueueIndex = 0;
+            advanceModalQueue();
         })
         .catch(err => console.error('Dynamic Modal Engine failed to fetch database config profile:', err));
+
+    // Fires the next modal in the auto queue, if any remain
+    function advanceModalQueue() {
+        const queue = window._autoModalQueue;
+        const idx = window._autoModalQueueIndex;
+
+        if (!queue || idx >= queue.length) return;
+
+        const next = queue[idx];
+        const fireDelay = idx === 0 ? next.delay : Math.floor(next.delay / 2);
+
+        setTimeout(() => {
+            // Only open if no modal is currently active (e.g. user manually opened one)
+            if (!overlay.classList.contains('active')) {
+                window.UniversalModalEngine.open(next.typeToken);
+
+                // Stage the pending cookie for this modal — committed on dismiss
+                window._pendingPromoCoookie = {
+                    name: `promo_shown_${next.typeToken}`,
+                    value: APP_VERSION,
+                    maxAge: next.cookieMaxAge
+                };
+            }
+        }, fireDelay);
+    }
 
     // 2. Abstract Action Component Generator Matrix
     const renderActionButtons = (actions, elevatedId) => {
@@ -331,7 +411,19 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.classList.remove('active');
             overlay.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
-            setTimeout(() => { container.innerHTML = ''; }, 300); // Flush cache variables after exit animations end
+            setTimeout(() => { container.innerHTML = ''; }, 300);
+
+            // 🕒 Commit the seen-cookie for the modal that was just dismissed,
+            // using its own configured expiry (e.g. 1hr for hoursAlert, 24hr for flashSale).
+            if (window._pendingPromoCoookie) {
+                const { name, value, maxAge } = window._pendingPromoCoookie;
+                document.cookie = `${name}=${value}; max-age=${maxAge}; path=/; SameSite=Strict`;
+                window._pendingPromoCoookie = null;
+            }
+
+            // Advance the queue — fire the next auto-modal if one is waiting
+            window._autoModalQueueIndex = (window._autoModalQueueIndex ?? 0) + 1;
+            advanceModalQueue();
         }
     };
 
@@ -347,16 +439,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Implicit System Timer Configuration Engine Utility
-    function initiateSystemTriggers(typeToken, delay) {
-        setTimeout(() => {
-            if (!overlay.classList.contains('active')) {
-                window.UniversalModalEngine.open(typeToken);
-            }
-        }, delay);
-    }
-
     // Dismissal triggers wire-ups
     closeBtn.addEventListener('click', window.UniversalModalEngine.close);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) window.UniversalModalEngine.close(); });
+});
+
+// Global Emergency Notice Banner Dismissal
+document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('global-alert-banner');
+    const closeBtn = document.getElementById('close-banner-btn');
+    
+    if (banner && closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            banner.classList.add('hidden');
+        });
+    }
+});
+
+// ==========================================================================
+// INTERSECTION OBSERVER: PREMIUM ENTRY ANIMATION ROUTINE
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const revealTargets = document.querySelectorAll('.reveal-on-scroll');
+
+    const observerOptions = {
+        root: null,         // Uses the natural browser viewport profile
+        rootMargin: '0px',
+        threshold: 0.08     // Fires the moment 8% of the target breaks the viewport boundary
+    };
+
+    const scrollRevealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Unobserve prevents the browser from recycling animations if a user scrolls back up
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    revealTargets.forEach(target => scrollRevealObserver.observe(target));
 });

@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="altStyles.css" as="style">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Sushi King — Rochester Hills, MI</title>
@@ -27,7 +31,7 @@
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" id="main-theme">
     <link rel="icon" href="assets/favicon.ico">
 
     <!-- Advanced SEO -->
@@ -98,13 +102,16 @@
   ]
 }
 </script>
+    <script src="lunch-mode-config.js"></script>
+    <script src="lunch-mode-boot.js"></script>
+    <script src="theme-switcher.js"></script>
 </head>
 
 <body>
 
     <header id="navbar" class="scrolled force-scrolled">
         <div class="logo-container">
-            <a href="index.html">
+            <a href="#top">
                 <img src="assets/horizontalVerWhite.png" alt="Sushi King" class="nav-brand-logo">
             </a>
         </div>
@@ -161,6 +168,20 @@
         <div class="menu-tabs-container" id="menu-tabs">
         </div>
 
+
+        <!--ADD OR REMOVE HIDDEN FROM class="alert-banner" to show/hide the banner -->
+        <div id="global-alert-banner" class="alert-banner">
+            <div class="banner-content">
+                <!--Change banner badge text as needed-->
+                <span class="banner-badge">Notice</span>
+                <!--Change banner content as needed-->
+                <p>We are experiencing exceptionally high order volumes tonight! Dine-in wait times and DoorDash
+                    processing streams may be delayed.</p>
+            </div>
+            <button id="close-banner-btn" class="banner-close">&times;</button>
+        </div>
+
+
         <div class="menu-grid-container" id="menu-cards-arena">
         </div>
     </main>
@@ -179,7 +200,7 @@
             <h3>Your Order</h3>
             <button id="close-cart-btn" class="close-panel-btn">&times;</button>
         </div>
-        
+
         <div id="cart-items-wrapper" class="cart-items-wrapper">
             <p class="empty-cart-msg">Your basket is currently empty.</p>
         </div>
@@ -196,30 +217,57 @@
     </div>
     <div id="cart-overlay" class="cart-overlay"></div>
 
-    <footer id="hours" class="info-footer">
+    <footer id="hours" class="info-footer" style="position: relative;">
         <div class="footer-grid">
             <div>
-                <h4>FIND US</h4>
-                <p>147 W Auburn Rd,<br>Rochester Hills, MI</p>
-            </div>
-            <div>
                 <h4>HOURS</h4>
-                <p>Tue - Thu: 11:00AM - 9:00PM<br>
+                <p><span>Monday: Closed</span><br>Tue - Thu: 11:00AM - 9:00PM<br>
                     Fri - Sat: 11:00AM - 9:30PM<br>
                     Sun: 12:00PM - 9:00PM<br>
-                    <span class="brand-color">Monday: Closed</span>
                 </p>
+            </div>
+            <div>
+                <h4>FIND US</h4>
+                <div class="find-us-wrapper">
+                    <p>147 W Auburn Rd,<br>Rochester Hills, MI</p>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.9566989446485!2d-83.14184652345095!3d42.662243716611594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ea4b1f6db9bf%3A0x6002f5a6b0be6e18!2s147%20W%20Auburn%20Rd%2C%20Rochester%20Hills%2C%20MI%2048307!5e0!3m2!1sen!2sus!4v1718475000000!5m2!1sen!2sus"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
             </div>
             <div>
                 <h4>CONTACT</h4>
                 <p>Phone: (248) 266-2003<br>Web: sushikingmi.com</p>
             </div>
         </div>
+        <div class="light-dark-mode-toggle">
+            <button id="theme-toggle" type="button" class="toggle-btn" aria-label="Toggle Light/Dark Mode" aria-pressed="false">
+                <span class="toggle-bg"></span>
+                <span class="toggle-emoji toggle-sun" aria-hidden="true"></span>
+                <span class="toggle-emoji toggle-moon" aria-hidden="true"></span>
+                <span id="toggle-thumb" class="toggle-thumb"></span>
+            </button>
+        </div>
     </footer>
+
 
     <script src="menu-data.js"></script>
     <script src="app.js"></script>
     <script src="cart-sync.js"></script>
+
+    <div data-auto-modal="hoursAlert"></div>
+
+    <div id="universal-modal" class="uni-modal-overlay" aria-hidden="true">
+        <div class="uni-modal-wrapper">
+            <button id="close-uni-modal" class="uni-modal-close-trigger" aria-label="Dismiss Modal">&times;</button>
+            <div id="uni-modal-runtime-content"></div>
+        </div>
+    </div>
 </body>
 
 </html>

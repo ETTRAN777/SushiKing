@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="altStyles.css" as="style">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushi King | Authentic Japanese Sushi Restaurant — Rochester Hills, MI</title>
@@ -29,7 +32,7 @@
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" id="main-theme">
     <link rel="icon" href="assets/favicon.ico">
 
     <!-- Advanced SEO -->
@@ -102,6 +105,10 @@
   }
 }
 </script>
+
+    <script src="lunch-mode-config.js"></script>
+    <script src="lunch-mode-boot.js"></script>
+    <script src="theme-switcher.js"></script>
 </head>
 
 <body>
@@ -116,7 +123,8 @@
         <nav class="desktop-nav">
             <a href="#story">Our Story</a>
             <a href="#featured">Featured Rolls</a>
-            <a href="menu.html">View Menu</a>
+            <a href="menu.html">Menu</a>
+            <a href="#catering">Catering</a>
             <a href="#hours">Hours & Contact</a>
         </nav>
 
@@ -135,7 +143,8 @@
                 <a href="https://order.sushikingmi.com/" class="mobile-link">Order Online</a>
                 <a href="#story" class="mobile-link">Our Story</a>
                 <a href="#featured" class="mobile-link">Featured Rolls</a>
-                <a href="menu.html" class="mobile-link">View Menu</a>
+                <a href="menu.html" class="mobile-link">Menu</a>
+                <a href="#catering" class="mobile-link">Catering</a>
                 <a href="#hours" class="mobile-link">Hours & Contact</a>
             </div>
         </div>
@@ -158,7 +167,7 @@
         </div>
     </section>
 
-    <section id="story" class="story-section">
+    <section id="story" class="story-section reveal-on-scroll delay-100">
         <div class="story-container">
             <span class="story-tagline">Our Heritage</span>
             <h2>Crafting The Legend</h2>
@@ -176,7 +185,7 @@
         </div>
     </section>
 
-    <section id="featured" class="featured-section">
+    <section id="featured" class="featured-section reveal-on-scroll delay-100">
         <div class="section-header">
             <span class="tagline">Chef's Signature Selections</span>
             <h2>THE SPECIAL ROLLS</h2>
@@ -226,7 +235,7 @@
     </section>
 
 
-    <section id="catering" class="catering-section">
+    <section id="catering" class="catering-section reveal-on-scroll delay-100" style="scroll-margin-top: 70px;">
         <div class="catering-overlay-dim"></div>
         <div class="catering-inner-content">
             <span class="catering-pre-title">Exclusive Events & Private Gatherings</span>
@@ -239,48 +248,65 @@
             </p>
             <div class="catering-btn-group">
 
-                <button class="hero-btn primary" data-modal-target="catering" data-modal-elevate="act-email">
+                <a class="hero-btn primary" data-modal-target="catering" data-modal-elevate="act-email">
                     Inquire Now
-                </button>
+                </a>
 
                 <a href="assets/finalsushimenu.pdf" target="_blank" class="hero-btn secondary">View Catering Options</a>
             </div>
         </div>
     </section>
 
-    <footer id="hours" class="info-footer">
+    <footer id="hours" class="info-footer" style="position: relative;">
         <div class="footer-grid">
             <div>
-                <h4>FIND US</h4>
-                <p>147 W Auburn Rd,<br>Rochester Hills, MI</p>
-            </div>
-            <div>
                 <h4>HOURS</h4>
-                <p>Tue - Thu: 11:00AM - 9:00PM<br>
+                <p><span>Monday: Closed</span><br>Tue - Thu: 11:00AM - 9:00PM<br>
                     Fri - Sat: 11:00AM - 9:30PM<br>
                     Sun: 12:00PM - 9:00PM<br>
-                    <span class="brand-color">Monday: Closed</span>
                 </p>
+            </div>
+            <div>
+                <h4>FIND US</h4>
+                <div class="find-us-wrapper">
+                    <p>147 W Auburn Rd,<br>Rochester Hills, MI</p>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.9566989446485!2d-83.14184652345095!3d42.662243716611594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ea4b1f6db9bf%3A0x6002f5a6b0be6e18!2s147%20W%20Auburn%20Rd%2C%20Rochester%20Hills%2C%20MI%2048307!5e0!3m2!1sen!2sus!4v1718475000000!5m2!1sen!2sus"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
             </div>
             <div>
                 <h4>CONTACT</h4>
                 <p>Phone: (248) 266-2003<br>Web: sushikingmi.com</p>
             </div>
         </div>
+        <div class="light-dark-mode-toggle">
+            <button id="theme-toggle" type="button" class="toggle-btn" aria-label="Toggle Light/Dark Mode" aria-pressed="false">
+                <span class="toggle-bg"></span>
+                <span class="toggle-emoji toggle-sun" aria-hidden="true"></span>
+                <span class="toggle-emoji toggle-moon" aria-hidden="true"></span>
+                <span id="toggle-thumb" class="toggle-thumb"></span>
+            </button>
+        </div>
     </footer>
+
+    <div data-auto-modal="flashSale"></div>
+    <div data-auto-modal="hoursAlert"></div>
 
     <script src="app.js"></script>
 
-    <div class="hero-btn primary" data-modal-target="flashSale">
-    </div>
-
-
     <div id="universal-modal" class="uni-modal-overlay" aria-hidden="true">
         <div class="uni-modal-wrapper">
-            <button id="close-uni-modal" aria-label="Close modal">&times;</button>
+            <button id="close-uni-modal" class="uni-modal-close-trigger" aria-label="Dismiss Modal">&times;</button>
             <div id="uni-modal-runtime-content"></div>
         </div>
     </div>
+
 </body>
 
 </html>
