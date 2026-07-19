@@ -30,6 +30,8 @@ html {
     -ms-overflow-style: none;
     /* IE and Edge */
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    /* Prevents mobile Safari from allowing horizontal zoom-out past viewport width */
 }
 
 ::-webkit-scrollbar {
@@ -767,7 +769,10 @@ nav a:hover {
         position: relative;
         width: 24px;
         height: 20px;
+        min-width: 24px;
+        min-height: 20px;
         padding: 0;
+        flex-shrink: 0;
         z-index: 1000;
         /* Stays fixed securely on top of the half-page slide drawer */
     }
