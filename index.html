@@ -44,20 +44,22 @@
     <link rel="icon" href="assets/favicon.ico">
 
     <!-- Advanced SEO -->
-    <script type="application/ld:json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SushiRestaurant",
+  "@type": "Restaurant",
   "@id": "https://www.sushikingmi.com/#restaurant",
   "name": "Sushi King",
+  "servesCuisine": ["Japanese", "Sushi"],
   "image": [
-    "https://www.sushikingmi.com/assets/horizontalVerWhite.png"
+    "https://www.sushikingmi.com/assets/horizontalVerWhite.png",
+    "https://www.sushikingmi.com/assets/sushiKingOGImage.png"
   ],
   "url": "https://www.sushikingmi.com/",
   "telephone": "+12482662003",
   "priceRange": "$$",
   "menu": "https://www.sushikingmi.com/menu.html#main-menu",
-  "acceptsReservations": "false",
+  "acceptsReservations": false,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "147 W Auburn Rd",
@@ -74,20 +76,13 @@
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Tuesday",
-        "Wednesday",
-        "Thursday"
-      ],
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"],
       "opens": "11:00",
       "closes": "21:00"
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Friday",
-        "Saturday"
-      ],
+      "dayOfWeek": ["Friday", "Saturday"],
       "opens": "11:00",
       "closes": "21:30"
     },
@@ -98,18 +93,45 @@
       "closes": "21:00"
     }
   ],
-  "potentialAction": {
-    "@type": "OrderAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://order.sushikingmi.com/",
-      "inLanguage": "en-US",
-      "actionPlatform": [
-        "http://schema.org/DesktopWebPlatform",
-        "http://schema.org/MobileWebPlatform"
-      ]
+  "potentialAction": [
+    {
+      "@type": "OrderAction",
+      "name": "Order Pickup or Delivery Directly",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://order.sushikingmi.com/",
+        "inLanguage": "en-US",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      },
+      "deliveryMethod": ["https://schema.org/OnSitePickup"]
     },
-    "deliveryMethod": ["http://schema.org/DeliveryModePickUp", "http://schema.org/DeliveryModeDelivery"]
+    {
+      "@type": "OrderAction",
+      "name": "Order Delivery via DoorDash",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.doordash.com/en-CA/store/sushi-king-rochester-hills-24773079/",
+        "inLanguage": "en-US",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      },
+      "deliveryMethod": ["https://schema.org/ParcelService"]
+    }
+  ],
+  "makesOffer": {
+    "@type": "Offer",
+    "url": "mailto:sushiking@gmail.com?subject=Catering%20Inquiry%20-%20Sushi%20King&body=Thank%20you%20for%20choosing%20Sushi%20King!%20Please%20fill%20out%20the%20details%20below%20so%20we%20can%20build%20your%20quote%3A%0D%0A%0D%0A-%20Full%20Name%3A%0D%0A-%20Phone%20Number%3A%0D%0A-%20Date%20%26%20Time%20of%20Event%3A%0D%0A-%20Estimated%20Guest%20Count%3A%0D%0A-%20Any%20Dietary%20Restrictions/Allergies%3A",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Catering",
+      "serviceType": "Catering",
+      "description": "Custom catering quotes for events, built from guest count, date, and dietary needs. Inquiries handled by email."
+    }
   }
 }
 </script>
