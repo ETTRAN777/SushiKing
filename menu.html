@@ -4,7 +4,6 @@
 <head>
 
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="altStyles.css" as="style">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -147,7 +146,7 @@
         <div class="menu-hero-overlay"></div>
         <div class="menu-hero-content animate-fade-in">
             <span class="tagline">Artisan Culinary Selections</span>
-            <h1>OUR MENU</h1>
+            <h1>OUR MENU <span class="sr-only">— Sushi King, Japanese Restaurant in Rochester Hills, MI</span></h1>
             <div class="brand-divider"></div>
             <p class="menu-hero-subtitle">Every selection meticulously prepared using authentic techniques and premium
                 fresh catches.</p>
@@ -186,36 +185,6 @@
         </div>
     </main>
 
-    <div id="cart-floating-bar" class="cart-floating-bar hidden">
-        <div class="cart-bar-content">
-            <span id="cart-item-count">0 Items Selected</span>
-            <button id="open-cart-btn" class="view-cart-action-btn">
-                View Order (<span id="cart-subtotal-display">$0.00</span>)
-            </button>
-        </div>
-    </div>
-
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-sidebar-header">
-            <h3>Your Order</h3>
-            <button id="close-cart-btn" class="close-panel-btn">&times;</button>
-        </div>
-
-        <div id="cart-items-wrapper" class="cart-items-wrapper">
-            <p class="empty-cart-msg">Your basket is currently empty.</p>
-        </div>
-
-        <div class="cart-sidebar-footer">
-            <div class="summary-line">
-                <span>Subtotal</span>
-                <span id="cart-total-price">$0.00</span>
-            </div>
-            <button id="checkout-pos-btn" class="checkout-pos-btn" disabled>
-                Proceed to Online Checkout
-            </button>
-        </div>
-    </div>
-    <div id="cart-overlay" class="cart-overlay"></div>
 
     <footer id="hours" class="info-footer" style="position: relative;">
         <div class="footer-grid">
@@ -258,7 +227,6 @@
 
     <script src="menu-data.js"></script>
     <script src="app.js"></script>
-    <script src="cart-sync.js"></script>
 
     <div data-auto-modal="hoursAlert"></div>
 

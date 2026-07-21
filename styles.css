@@ -9,6 +9,99 @@
     --border-dark: #222226;
     --font-display: 'Bebas Neue', system-ui, sans-serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
+    --nav-link-color: #bbbdc4;
+    --nav-link-hover-color: #ffffff;
+    --header-scrolled-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --header-scrolled-background: rgba(7, 7, 8, 0.85);
+    --cta-btn-color: var(--text-white);
+    --hero-content-p-color: var(--text-gray);
+    --hero-btn-primary-background: var(--text-white);
+    --hero-btn-primary-color: var(--bg-dark);
+    --hero-btn-primary-hover-color: var(--text-white);
+    --hero-btn-secondary-border: 1px solid rgba(255, 255, 255, 0.2);
+    --hero-btn-secondary-color: var(--text-white);
+    --hero-btn-secondary-hover-border-color: var(--text-white);
+    --hero-btn-secondary-hover-background: rgba(255, 255, 255, 0.05);
+    --menu-card-hover-border-color: rgba(220, 38, 38, 0.4);
+    --menu-card-highlighted-border-color: rgba(220, 38, 38, 0.6);
+    --card-img-placeholder-background-image: linear-gradient(135deg,
+            transparent 0%,
+            transparent 65%,
+            rgba(255, 255, 255, 0.025) 65%,
+            rgba(255, 255, 255, 0.025) 100%),
+        linear-gradient(-45deg,
+            transparent 0%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.18) 75%,
+            rgba(0, 0, 0, 0.18) 100%);
+    --card-img-placeholder-background-color: #121214;
+    --price-tag-color: var(--text-white);
+    --price-tag-background: rgba(7, 7, 8, 0.8);
+    --info-footer-background: #0d0d11;
+    --footer-grid-p-color: #e5e7eb;
+    --map-container-background: var(--bg-card, #121214);
+    --map-container-filter: grayscale(100%) invert(92%) hue-rotate(180deg) opacity(0.6);
+    --map-container-hover-filter: grayscale(0%) invert(92%) hue-rotate(180deg) opacity(0.6);
+    --theme-toggle-toggle-sun-background-image: url('assets/whiteSun.png');
+    --theme-toggle-toggle-moon-background-image: url('assets/whiteMoon.png');
+    --mobile-menu-border-left: 1px solid rgba(255, 255, 255, 0.05);
+    --mobile-menu-background: rgba(10, 10, 12, 0.99);
+    --mobile-menu-active-box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+    --mobile-nav-links-mobile-link-color: #ffffff !important;
+    --mobile-nav-links-mobile-cta-color: #ffffff !important;
+    --menu-toggle-bar-transition: top 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+            opacity 0.15s ease;
+    --menu-toggle-active-bar-transition: top 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.15s ease 0.15s;
+    --menu-tab-btn-hover-background-color: rgba(255, 255, 255, 0.03);
+    --menu-card-hover-border-color-2: #33333a;
+    --price-tag-color-2: var(--brand-red);
+    --special-info-block-background-color: #0d0d10;
+    --poke-step-col-ul-li-border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    --pill-cloud-span-background: #1a1a1e;
+    --pill-cloud-sauces-span-border-color: rgba(220, 38, 38, 0.3);
+    --header-force-scrolled-border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    --header-force-scrolled-background: rgba(7, 7, 8, 0.95) !important;
+    --menu-hero-banner-background: #09090b;
+    --menu-hero-overlay-background: radial-gradient(circle at 50% 40%, rgba(220, 38, 38, 0.06) 0%, transparent 70%);
+    --view-onsite-btn-box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+    --view-onsite-btn-hover-box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    --story-section-border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    --story-section-before-background: radial-gradient(circle, rgba(220, 38, 38, 0.02) 0%, transparent 70%);
+    --menu-pdf-fallback-btn-background-color: rgba(255, 255, 255, 0.05);
+    --menu-pdf-fallback-btn-hover-box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    --catering-overlay-dim-background: linear-gradient(to bottom, rgba(7, 7, 8, 0.7) 0%, rgba(7, 7, 8, 0.9) 100%);
+    --catering-pre-title-color: var(--brand-red);
+    --catering-inner-content-h2-color: var(--text-white);
+    --catering-inner-content-p-color: var(--text-gray);
+    --uni-modal-overlay-background: rgba(4, 4, 5, 0.85);
+    --uni-modal-wrapper-box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    --uni-modal-wrapper-background: #0d0d0f;
+    --close-uni-modal-hover-background: rgba(255, 255, 255, 0.05);
+    --layout-catering-modal-row-link-accented-color: #ffffff;
+    --layout-catering-modal-row-link-accented-hover-box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+    --layout-catering-modal-row-link-neutral-border: 1px solid rgba(255, 255, 255, 0.06);
+    --layout-catering-modal-row-link-neutral-background: rgba(255, 255, 255, 0.03);
+    --layout-catering-modal-row-link-neutral-hover-background: rgba(255, 255, 255, 0.06);
+    --uni-modal-meta-text-color: rgba(255, 255, 255, 0.3);
+    --layout-newsletter-border-top: 4px solid #ffffff;
+    --layout-newsletter-modal-form-input-color: #ffffff;
+    --layout-newsletter-modal-form-input-background: rgba(255, 255, 255, 0.04);
+    --layout-newsletter-modal-form-input-focus-border-color: #ffffff;
+    --layout-newsletter-modal-form-btn-color: #070708;
+    --layout-promo-modal-dynamic-title-text-shadow: 0 4px 30px rgba(220, 38, 38, 0.15);
+    --layout-promo-modal-dynamic-desc-color: #d4d4d8;
+    --layout-promo-modal-promo-cta-box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+    --layout-promo-modal-promo-cta-color: #ffffff;
+    --layout-promo-modal-promo-cta-hover-box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    --layout-alert-modal-dismiss-btn-color: #ffffff;
+    --layout-alert-modal-dismiss-btn-hover-background: rgba(255, 255, 255, 0.04);
+    --alert-banner-border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+    --alert-banner-background: #1a1515;
+    --banner-badge-color: #ffffff;
+    --banner-close-color: #ffffff;
 }
 
 * {
@@ -16,6 +109,20 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-body);
+}
+
+/* Visually hidden but readable by screen readers/crawlers — used for
+   SEO-descriptive text inside H1s that would otherwise clutter the design */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* Hide scrollbar completely across all browser engines */
@@ -63,12 +170,12 @@ header {
 }
 
 header.scrolled {
-    background: rgba(7, 7, 8, 0.85);
+    background: var(--header-scrolled-background);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-dark);
     padding: 1rem 5%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--header-scrolled-box-shadow);
     transition: padding 0.3s ease, box-shadow 0.3s ease, background 0s linear;
 }
 
@@ -102,7 +209,7 @@ header.scrolled {
 }
 
 nav a {
-    color: var(--text-gray);
+    color: var(--nav-link-color);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -114,12 +221,12 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--text-white);
+    color: var(--nav-link-hover-color);
 }
 
 .cta-btn {
     background: var(--brand-red);
-    color: var(--text-white);
+    color: var(--cta-btn-color);
     text-decoration: none;
     padding: 0.65rem 1.5rem;
     text-transform: uppercase;
@@ -201,7 +308,7 @@ nav a:hover {
 
 .hero-content p {
     font-size: 1rem;
-    color: var(--text-gray);
+    color: var(--hero-content-p-color);
     margin-bottom: 2.5rem;
     font-weight: 300;
     letter-spacing: 0.12rem;
@@ -212,6 +319,14 @@ nav a:hover {
     display: flex;
     justify-content: center;
     gap: 15px;
+}
+
+.hero-order-note {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--text-gray);
+    font-family: var(--font-body);
+    letter-spacing: 0.03em;
 }
 
 .hero-btn {
@@ -233,25 +348,25 @@ nav a:hover {
 }
 
 .hero-btn.primary {
-    background: var(--text-white);
-    color: var(--bg-dark);
+    background: var(--hero-btn-primary-background);
+    color: var(--hero-btn-primary-color);
 
 }
 
 .hero-btn.primary:hover {
     background: var(--brand-red);
-    color: var(--text-white);
+    color: var(--hero-btn-primary-hover-color);
 
 }
 
 .hero-btn.secondary {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-white);
+    border: var(--hero-btn-secondary-border);
+    color: var(--hero-btn-secondary-color);
 }
 
 .hero-btn.secondary:hover {
-    border-color: var(--text-white);
-    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--hero-btn-secondary-hover-border-color);
+    background: var(--hero-btn-secondary-hover-background);
 }
 
 /* Featured Menu Layout styling */
@@ -305,11 +420,11 @@ nav a:hover {
 
 .menu-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(220, 38, 38, 0.4);
+    border-color: var(--menu-card-hover-border-color);
 }
 
 .menu-card.highlighted {
-    border-color: rgba(220, 38, 38, 0.6);
+    border-color: var(--menu-card-highlighted-border-color);
 }
 
 .card-img-placeholder {
@@ -317,18 +432,9 @@ nav a:hover {
     background: #1c1c21;
     position: relative;
     overflow: hidden;
-    background-color: #121214;
+    background-color: var(--card-img-placeholder-background-color);
     background-image:
-        linear-gradient(135deg,
-            transparent 0%,
-            transparent 65%,
-            rgba(255, 255, 255, 0.025) 65%,
-            rgba(255, 255, 255, 0.025) 100%),
-        linear-gradient(-45deg,
-            transparent 0%,
-            transparent 75%,
-            rgba(0, 0, 0, 0.18) 75%,
-            rgba(0, 0, 0, 0.18) 100%);
+        var(--card-img-placeholder-background-image);
 }
 
 
@@ -336,12 +442,12 @@ nav a:hover {
     position: absolute;
     bottom: 12px;
     right: 12px;
-    background: rgba(7, 7, 8, 0.8);
+    background: var(--price-tag-background);
     padding: 0.3rem 0.75rem;
     border-radius: 4px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-white);
+    color: var(--price-tag-color);
 }
 
 .badge {
@@ -397,7 +503,7 @@ nav a:hover {
 /* Info Sticky Footer */
 .info-footer {
     border-top: 1px solid var(--border-dark);
-    background: #0d0d11;
+    background: var(--info-footer-background);
     padding: 4rem 10%;
 }
 
@@ -419,7 +525,7 @@ nav a:hover {
 
 .footer-grid p {
     font-size: 0.85rem;
-    color: #e5e7eb;
+    color: var(--footer-grid-p-color);
     line-height: 1.7;
     font-weight: 300;
 }
@@ -457,14 +563,14 @@ nav a:hover {
     border: 1px solid var(--border-dark, #222226);
     overflow: hidden;
     position: relative;
-    background: var(--bg-card, #121214);
+    background: var(--map-container-background);
     
-    filter: grayscale(100%) invert(92%) hue-rotate(180deg) opacity(0.6);
+    filter: var(--map-container-filter);
     transition: filter 0.3s ease, border-color 0.3s ease;
 }
 
 .map-container:hover {
-    filter: grayscale(0%) invert(92%) hue-rotate(180deg) opacity(0.6);
+    filter: var(--map-container-hover-filter);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -548,13 +654,13 @@ nav a:hover {
 #theme-toggle .toggle-sun {
     left: 10px;
     opacity: 1;
-    background-image: url('assets/whiteSun.png');
+    background-image: var(--theme-toggle-toggle-sun-background-image);
 }
 
 #theme-toggle .toggle-moon {
     right: 10px;
     opacity: 0.35;
-    background-image: url('assets/whiteMoon.png');
+    background-image: var(--theme-toggle-toggle-moon-background-image);
 }
 
 #theme-toggle[aria-pressed="true"] .toggle-sun {
@@ -643,10 +749,10 @@ nav a:hover {
     height: 100%;
     height: 100dvh;
 
-    background: rgba(10, 10, 12, 0.99);
+    background: var(--mobile-menu-background);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: var(--mobile-menu-border-left);
     z-index: 999;
 
     /* Layout containment: Switch from center-weighted to top-weighted 
@@ -669,7 +775,7 @@ nav a:hover {
 /* Active trigger state injected dynamically by the JavaScript Engine */
 .mobile-menu.active {
     transform: translateX(0);
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+    box-shadow: var(--mobile-menu-active-box-shadow);
 }
 
 /* Vertical distribution stack formatting */
@@ -684,7 +790,7 @@ nav a:hover {
 
 /* High-visibility typography rules */
 .mobile-nav-links .mobile-link {
-    color: #ffffff !important;
+    color: var(--mobile-nav-links-mobile-link-color);
     text-decoration: none;
     font-size: 1.25rem;
     text-transform: uppercase;
@@ -708,7 +814,7 @@ nav a:hover {
 .mobile-nav-links .mobile-cta {
     margin-top: 1rem;
     display: block;
-    color: #ffffff !important;
+    color: var(--mobile-nav-links-mobile-cta-color);
     background-color: var(--brand-red);
     text-decoration: none;
     text-transform: uppercase;
@@ -782,9 +888,7 @@ nav a:hover {
         left: 0;
         transform-origin: center;
         transition:
-            top 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
-            opacity 0.15s ease;
+            var(--menu-toggle-bar-transition);
     }
 
     /* Idle layout rows initialization */
@@ -804,9 +908,7 @@ nav a:hover {
     #menu-toggle.active .bar {
         top: 9px;
         transition:
-            top 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
-            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-            opacity 0.15s ease 0.15s;
+            var(--menu-toggle-active-bar-transition);
     }
 
     #menu-toggle.active .bar:nth-child(1) {
@@ -907,7 +1009,7 @@ nav a:hover {
 
 .menu-tab-btn:hover {
     color: var(--text-white);
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: var(--menu-tab-btn-hover-background-color);
 }
 
 .menu-tab-btn.active {
@@ -922,6 +1024,7 @@ nav a:hover {
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 24px;
 }
+
 
 .menu-grid-container.layout-flex-vertical {
     display: flex;
@@ -944,7 +1047,7 @@ nav a:hover {
 
 .menu-card:hover {
     transform: translateY(-2px);
-    border-color: #33333a;
+    border-color: var(--menu-card-hover-border-color-2);
 }
 
 .menu-card-header {
@@ -969,13 +1072,13 @@ nav a:hover {
 
 .menu-card-header .price-tag {
     flex-shrink: 0;
-    /* Price never compresses regardless of item name length */
+    position: static;
 }
 
 .price-tag {
     font-size: 1.15rem;
     font-weight: 600;
-    color: var(--brand-red);
+    color: var(--price-tag-color-2);
     font-family: var(--font-body);
 }
 
@@ -995,7 +1098,7 @@ nav a:hover {
 }
 
 .special-info-block {
-    background-color: #0d0d10;
+    background-color: var(--special-info-block-background-color);
     border: 1px dashed var(--border-dark);
     border-radius: 6px;
     padding: 2rem;
@@ -1110,17 +1213,6 @@ nav a:hover {
     font-weight: 700;
 }
 
-.poke-step-col ul {
-    list-style: none;
-}
-
-.poke-step-col ul li {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-}
-
 /* Dynamic Flex Pill Clouds styling */
 .pill-cloud {
     display: flex;
@@ -1130,16 +1222,15 @@ nav a:hover {
 
 .pill-cloud span {
     font-size: 0.8rem;
-    background: #1a1a1e;
+    background: var(--pill-cloud-span-background);
     border: 1px solid var(--border-dark);
     padding: 4px 10px;
     border-radius: 20px;
     color: var(--text-gray);
 }
 
-.pill-cloud.sauces span {
-    border-color: rgba(220, 38, 38, 0.3);
-    color: var(--text-white);
+.pill-cloud span.popular {
+    border-color: var(--pill-cloud-sauces-span-border-color);
 }
 
 /* Smooth Interactive View Changes Animation Frame */
@@ -1165,10 +1256,10 @@ nav a:hover {
 
 /* Fixed Navbar override to guarantee consistent styling across text-heavy pages */
 header.force-scrolled {
-    background: rgba(7, 7, 8, 0.95) !important;
+    background: var(--header-force-scrolled-background);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: var(--header-force-scrolled-border-bottom);
 }
 
 /* Atmospheric hero entry frame for text-based pages */
@@ -1180,7 +1271,7 @@ header.force-scrolled {
     align-items: center;
     justify-content: center;
     padding: 140px 2rem 40px;
-    background: #09090b;
+    background: var(--menu-hero-banner-background);
     /* Base deep luxury charcoal */
     overflow: hidden;
 }
@@ -1192,7 +1283,7 @@ header.force-scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 40%, rgba(220, 38, 38, 0.06) 0%, transparent 70%);
+    background: var(--menu-hero-overlay-background);
     z-index: 1;
 }
 
@@ -1292,14 +1383,14 @@ header.force-scrolled {
     border-radius: 4px;
     border: 1px solid var(--brand-red);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+    box-shadow: var(--view-onsite-btn-box-shadow);
 }
 
 .view-onsite-btn:hover {
     background-color: var(--brand-red-hover);
     border-color: var(--brand-red-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    box-shadow: var(--view-onsite-btn-hover-box-shadow);
 }
 
 /* ==========================================================================
@@ -1309,7 +1400,7 @@ header.force-scrolled {
     padding: 120px 2rem;
     background-color: var(--bg-dark);
     position: relative;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    border-bottom: var(--story-section-border-bottom);
 }
 
 /* Subtle background accent glow echoing the red theme */
@@ -1321,7 +1412,7 @@ header.force-scrolled {
     transform: translate(-25%, -50%);
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(220, 38, 38, 0.02) 0%, transparent 70%);
+    background: var(--story-section-before-background);
     z-index: 1;
     pointer-events: none;
 }
@@ -1404,7 +1495,7 @@ header.force-scrolled {
     align-items: center;
     justify-content: center;
     margin-top: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--menu-pdf-fallback-btn-background-color);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--text-white);
     text-decoration: none;
@@ -1420,314 +1511,111 @@ header.force-scrolled {
 .menu-pdf-fallback-btn:hover {
     background-color: var(--brand-red);
     border-color: var(--brand-red);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    box-shadow: var(--menu-pdf-fallback-btn-hover-box-shadow);
     transform: translateY(-1px);
 }
 
 /* ==========================================================================
-   INTERACTIVE APP CART MODULE STYLES
+   REVIEWS SECTION
    ========================================================================== */
-.cart-floating-bar {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(18, 18, 20, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-dark);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    width: 90%;
-    max-width: 500px;
-    z-index: 999;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.cart-floating-bar.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, 20px);
-}
-
-.cart-bar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.view-cart-action-btn {
-    background: var(--brand-red);
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.view-cart-action-btn:hover {
-    background: var(--brand-red-hover);
-}
-
-/* Sidebar Drawer Panel */
-.cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 100%;
-    max-width: 400px;
-    height: 100vh;
-    background: #121214;
-    border-left: 1px solid var(--border-dark);
-    z-index: 2001;
-    display: flex;
-    flex-direction: column;
-    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cart-sidebar.open {
-    right: 0;
-}
-
-.cart-sidebar-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--border-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.close-panel-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.cart-items-wrapper {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.empty-cart-msg {
-    color: var(--text-gray);
+.reviews-section {
+    padding: 8rem 10% 6rem;
+    background: var(--bg-dark);
     text-align: center;
+}
+
+.reviews-rating-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.reviews-score {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--text-white);
+}
+
+.reviews-stars {
+    color: var(--brand-red);
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+}
+
+.reviews-count {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    font-family: var(--font-body);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 3.5rem;
+    text-align: left;
+}
+
+.review-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    padding: 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(220, 38, 38, 0.4);
+}
+
+.review-stars {
+    color: var(--brand-red);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.9rem;
+}
+
+.review-quote {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-white);
+    font-weight: 300;
+    margin-bottom: 1.1rem;
+    font-family: var(--font-body);
+}
+
+.review-author-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.review-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-dark);
+    flex-shrink: 0;
+}
+
+.review-author {
+    font-size: 0.78rem;
+    color: var(--text-gray);
+    letter-spacing: 0.05em;
+    font-family: var(--font-body);
+}
+
+.reviews-footer {
     margin-top: 3rem;
-    font-size: 0.95rem;
-}
-
-/* Individual Item Card in Cart */
-.cart-item-node {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.cart-item-details h4 {
-    font-size: 1rem;
-    color: white;
-    margin-bottom: 0.25rem;
-}
-
-.cart-item-details span {
-    color: var(--brand-red);
-    font-weight: 600;
-}
-
-.cart-item-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-}
-
-/* Trash / full-remove icon button */
-.remove-item-trigger {
-    background: none;
-    border: none;
-    color: var(--text-gray);
-    cursor: pointer;
-    padding: 0.35rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    transition: color 0.2s, background 0.2s;
-}
-
-.remove-item-trigger:hover {
-    color: #ef4444;
-    background: rgba(239, 68, 68, 0.08);
-}
-
-/* [ - qty + ] Quantity Stepper, shared between cart sidebar and menu cards */
-.qty-stepper {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--border-dark);
-    border-radius: 4px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.qty-stepper button {
-    background: transparent;
-    border: none;
-    color: var(--text-white);
-    width: 28px;
-    height: 28px;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, color 0.2s;
-}
-
-.qty-stepper button:hover {
-    background: var(--brand-red);
-    color: #ffffff;
-}
-
-.qty-stepper .qty-value-input {
-    min-width: 28px;
-    width: 28px;
-    text-align: center;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-white);
-    background: transparent;
-    border: none;
-    padding: 0;
-    -moz-appearance: textfield;
-}
-
-.qty-stepper .qty-value-input::-webkit-outer-spin-button,
-.qty-stepper .qty-value-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.qty-stepper .qty-value-input:focus {
-    outline: none;
-    background: rgba(255, 255, 255, 0.06);
-}
-
-/* Compact variant used inline within menu cards */
-.qty-stepper.qty-stepper-compact button {
-    width: 24px;
-    height: 24px;
-    font-size: 0.9rem;
-}
-
-.qty-stepper.qty-stepper-compact .qty-value-input {
-    min-width: 22px;
-    width: 22px;
-    font-size: 0.85rem;
-}
-
-.cart-sidebar-footer {
-    padding: 1.5rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom)) 1.5rem;
-    /* 👈 Adds protective padding buffer dynamically */
-    border-top: 1px solid var(--border-dark);
-    background: #161619;
-    /* Solid dark color block keeps items scrolling beneath hidden */
-
-    position: sticky;
-    bottom: 0;
-}
-
-.summary-line {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: white;
-}
-
-.checkout-pos-btn {
-    width: 100%;
-    background: var(--accent-gold, #10b981);
-    color: black;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: none;
-    padding: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.checkout-pos-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-.cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-
-.cart-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Inline Add to Cart Button inside main food cards */
-.add-to-cart-btn {
-    background: transparent;
-    border: 1px solid var(--brand-red);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.add-to-cart-btn:hover {
-    background: var(--brand-red);
-}
-
-.menu-item-info-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-}
-
-.menu-item-info-row .remove-item-trigger {
-    color: var(--text-gray);
-}
-
-.menu-card-header .menu-item-info-row .price-tag {
-    position: static;
-    bottom: auto;
-    right: auto;
-    background: rgba(7, 7, 8, 0.8);
-    color: var(--brand-red);
 }
 
 /* ==========================================================================
@@ -1757,7 +1645,7 @@ header.force-scrolled {
     width: 100%;
     height: 100%;
     /* Heavy cinematic fade to preserve light text legibility over any bright plate images */
-    background: linear-gradient(to bottom, rgba(7, 7, 8, 0.7) 0%, rgba(7, 7, 8, 0.9) 100%);
+    background: var(--catering-overlay-dim-background);
     z-index: 1;
     pointer-events: none;
 }
@@ -1774,7 +1662,7 @@ header.force-scrolled {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.25em;
-    color: var(--brand-red);
+    color: var(--catering-pre-title-color);
     font-weight: 600;
     display: block;
     margin-bottom: 1.2rem;
@@ -1787,7 +1675,7 @@ header.force-scrolled {
     font-weight: 400;
     letter-spacing: 0.05em;
     line-height: 1.1;
-    color: var(--text-white);
+    color: var(--catering-inner-content-h2-color);
 }
 
 .catering-accent-line {
@@ -1799,7 +1687,7 @@ header.force-scrolled {
 
 .catering-inner-content p {
     font-size: 1.05rem;
-    color: var(--text-gray);
+    color: var(--catering-inner-content-p-color);
     margin-bottom: 2.5rem;
     font-weight: 300;
     line-height: 1.6;
@@ -1846,7 +1734,7 @@ header.force-scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(4, 4, 5, 0.85);
+    background: var(--uni-modal-overlay-background);
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
@@ -1865,11 +1753,11 @@ header.force-scrolled {
 /* Base modal card structure */
 .uni-modal-wrapper {
     position: relative;
-    background: #0d0d0f;
+    background: var(--uni-modal-wrapper-background);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     padding: 3.5rem 2.5rem 2.5rem 2.5rem;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    box-shadow: var(--uni-modal-wrapper-box-shadow);
     width: 90%;
     transform: scale(0.95) translateY(10px);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1902,7 +1790,7 @@ header.force-scrolled {
 
 #close-uni-modal:hover {
     color: var(--text-white, #ffffff);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--close-uni-modal-hover-background);
     transform: rotate(90deg);
 }
 
@@ -1965,24 +1853,24 @@ header.force-scrolled {
 /* Email Prominence Styling */
 .layout-catering .modal-row-link.accented {
     background: var(--brand-red, #dc2626);
-    color: #ffffff;
+    color: var(--layout-catering-modal-row-link-accented-color);
 }
 
 .layout-catering .modal-row-link.accented:hover {
     background: var(--brand-red-hover, #b91c1c);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+    box-shadow: var(--layout-catering-modal-row-link-accented-hover-box-shadow);
 }
 
 /* Neutral Link Layout Options */
 .layout-catering .modal-row-link.neutral {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--layout-catering-modal-row-link-neutral-background);
+    border: var(--layout-catering-modal-row-link-neutral-border);
     color: var(--text-white, #ffffff);
 }
 
 .layout-catering .modal-row-link.neutral:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--layout-catering-modal-row-link-neutral-hover-background);
     border-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -2007,7 +1895,7 @@ header.force-scrolled {
     display: block;
     text-align: center;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--uni-modal-meta-text-color);
     margin-top: 1.5rem;
     line-height: 1.4;
 }
@@ -2018,7 +1906,7 @@ header.force-scrolled {
     max-width: 540px;
     padding: 3.5rem 2.5rem;
     text-align: center;
-    border-top: 4px solid #ffffff;
+    border-top: var(--layout-newsletter-border-top);
 }
 
 .layout-newsletter h3 {
@@ -2035,10 +1923,10 @@ header.force-scrolled {
 
 .layout-newsletter .modal-form-input {
     flex: 1;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--layout-newsletter-modal-form-input-background);
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 1rem;
-    color: #ffffff;
+    color: var(--layout-newsletter-modal-form-input-color);
     font-family: var(--font-body);
     border-radius: 4px;
     font-size: 0.95rem;
@@ -2046,13 +1934,13 @@ header.force-scrolled {
 }
 
 .layout-newsletter .modal-form-input:focus {
-    border-color: #ffffff;
+    border-color: var(--layout-newsletter-modal-form-input-focus-border-color);
     outline: none;
 }
 
 .layout-newsletter .modal-form-btn {
     background: #ffffff;
-    color: #070708;
+    color: var(--layout-newsletter-modal-form-btn-color);
     padding: 0 1.75rem;
     font-weight: 600;
     border: none;
@@ -2078,7 +1966,7 @@ header.force-scrolled {
 }
 
 .layout-promo .modal-dynamic-title {
-    text-shadow: 0 4px 30px rgba(220, 38, 38, 0.15);
+    text-shadow: var(--layout-promo-modal-dynamic-title-text-shadow);
     font-size: 2.6rem;
     margin-bottom: 1rem;
 }
@@ -2087,7 +1975,7 @@ header.force-scrolled {
     font-size: 0.95rem;
     max-width: 400px;
     margin: 0 auto 2rem auto;
-    color: #d4d4d8;
+    color: var(--layout-promo-modal-dynamic-desc-color);
     line-height: 1.6;
 }
 
@@ -2095,7 +1983,7 @@ header.force-scrolled {
 .layout-promo .modal-promo-cta {
     display: inline-block;
     background: var(--brand-red, #dc2626);
-    color: #ffffff;
+    color: var(--layout-promo-modal-promo-cta-color);
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -2104,13 +1992,13 @@ header.force-scrolled {
     padding: 1.15rem 2.5rem;
     border-radius: 4px;
     transition: all 0.25s ease;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+    box-shadow: var(--layout-promo-modal-promo-cta-box-shadow);
 }
 
 .layout-promo .modal-promo-cta:hover {
     background: var(--brand-red-hover, #b91c1c);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    box-shadow: var(--layout-promo-modal-promo-cta-hover-box-shadow);
 }
 
 /* LOOK 4: Critical Interface Announcement Layout Schema (HoursAlert) */
@@ -2134,7 +2022,7 @@ header.force-scrolled {
     width: 100%;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #ffffff;
+    color: var(--layout-alert-modal-dismiss-btn-color);
     font-weight: 500;
     text-transform: uppercase;
     padding: 1rem;
@@ -2146,7 +2034,7 @@ header.force-scrolled {
 }
 
 .layout-alert .modal-dismiss-btn:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--layout-alert-modal-dismiss-btn-hover-background);
     border-color: var(--brand-red);
 }
 
@@ -2157,8 +2045,8 @@ header.force-scrolled {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #1a1515;
-    border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+    background: var(--alert-banner-background);
+    border-bottom: var(--alert-banner-border-bottom);
     padding: 0.75rem 2rem;
     position: relative;
     z-index: 10;
@@ -2179,7 +2067,7 @@ header.force-scrolled {
 
 .banner-badge {
     background: var(--brand-red, #dc2626);
-    color: #ffffff;
+    color: var(--banner-badge-color);
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -2198,7 +2086,7 @@ header.force-scrolled {
 .banner-close {
     background: none;
     border: none;
-    color: #ffffff;
+    color: var(--banner-close-color);
     font-size: 1.5rem;
     cursor: pointer;
     opacity: 0.6;
@@ -2252,4 +2140,167 @@ header.force-scrolled {
 
 .delay-400 {
     transition-delay: 0.4s;
+}
+
+/* ==========================================================================
+   LUNCH MODE (LIGHT THEME) OVERRIDES
+   Applied when <html> has class "lunch-mode" (see theme-switcher.js)
+   ========================================================================== */
+:root.lunch-mode {
+    --bg-dark: #f5f0e8;
+    --bg-card: #ffffff;
+    --border-dark: #ddd8cc;
+    --text-white: #1a1a18;
+    --text-gray: #5c5c52;
+    --nav-link-hover-color: #dc2626;
+    --header-scrolled-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --header-scrolled-background: rgba(245, 240, 232, 0.95);
+    --cta-btn-color: #f5f0e8;
+    --hero-content-p-color: rgba(245, 240, 232, 0.75);
+    --hero-btn-primary-background: var(--bg-dark);
+    --hero-btn-primary-color: var(--text-gray);
+    --hero-btn-primary-hover-color: #f5f0e8;
+    --hero-btn-secondary-border: 1px solid rgba(245, 240, 232, 0.4);
+    --hero-btn-secondary-color: var(--bg-dark);
+    --hero-btn-secondary-hover-border-color: #f5f0e8;
+    --hero-btn-secondary-hover-background: rgba(245, 240, 232, 0.3);
+    --menu-card-hover-border-color: rgba(255, 255, 255, 0.4);
+    --menu-card-highlighted-border-color: var(--brand-red);
+    --card-img-placeholder-background-image: linear-gradient(135deg,
+            transparent 0%,
+            transparent 65%,
+            rgba(255, 255, 255, 0.06) 65%,
+            rgba(255, 255, 255, 0.06) 100%),
+        linear-gradient(-45deg,
+            transparent 0%,
+            transparent 75%,
+            rgba(255, 255, 255, 0.04) 75%,
+            rgba(255, 255, 255, 0.04) 100%);
+    --card-img-placeholder-background-color: #e8e3d8;
+    --price-tag-color: #f5f0e8;
+    --price-tag-background: var(--brand-red);
+    --info-footer-background: #f5f0e8;
+    --footer-grid-p-color: #3a3a30;
+    --map-container-background: var(--bg-card, #ffffff);
+    --map-container-filter: opacity(0.6);
+    --map-container-hover-filter: opacity(1);
+    --theme-toggle-toggle-sun-background-image: url('assets/blackSun.png');
+    --theme-toggle-toggle-moon-background-image: url('assets/blackMoon.png');
+    --mobile-menu-border-left: 1px solid rgba(255, 255, 255, 0.06);
+    --mobile-menu-background: rgba(245, 240, 232, 0.99);
+    --mobile-menu-active-box-shadow: -10px 0 40px rgba(0, 0, 0, 0.12);
+    --mobile-nav-links-mobile-link-color: #1a1a18 !important;
+    --mobile-nav-links-mobile-cta-color: #1a1a18 !important;
+    --menu-toggle-bar-transition: top 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+            opacity 0.15s ease,
+            background-color 0.2s ease;
+    --menu-toggle-active-bar-transition: top 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.15s ease 0.15s,
+            background-color 0.2s ease;
+    --menu-tab-btn-hover-background-color: rgba(255, 255, 255, 0.04);
+    --menu-card-hover-border-color-2: #ddd8cc;
+    --price-tag-color-2: var(--text-white);
+    --special-info-block-background-color: #f5f0e8;
+    --poke-step-col-ul-li-border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    --pill-cloud-span-background: #e8e3d8;
+    --pill-cloud-sauces-span-border-color: rgba(255, 255, 255, 0.2);
+    --header-force-scrolled-border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    --header-force-scrolled-background: rgba(245, 240, 232, 0.97) !important;
+    --menu-hero-banner-background: #ede8df;
+    --menu-hero-overlay-background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+    --view-onsite-btn-box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    --view-onsite-btn-hover-box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+    --story-section-border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    --story-section-before-background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+    --menu-pdf-fallback-btn-background-color: rgba(255, 255, 255, 0.06);
+    --menu-pdf-fallback-btn-hover-box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+    --catering-overlay-dim-background: linear-gradient(to bottom, rgba(7, 7, 8, 0.45) 0%, rgba(7, 7, 8, 0.80) 100%);
+    --catering-pre-title-color: #f5f0e8;
+    --catering-inner-content-h2-color: #f5f0e8;
+    --catering-inner-content-p-color: rgba(245, 240, 232, 0.8);
+    --uni-modal-overlay-background: rgba(245, 240, 232, 0.95);
+    --uni-modal-wrapper-box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+    --uni-modal-wrapper-background: #f5f0e8;
+    --close-uni-modal-hover-background: rgba(255, 255, 255, 0.06);
+    --layout-catering-modal-row-link-accented-color: #1a1a18;
+    --layout-catering-modal-row-link-accented-hover-box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
+    --layout-catering-modal-row-link-neutral-border: 1px solid rgba(255, 255, 255, 0.07);
+    --layout-catering-modal-row-link-neutral-background: rgba(255, 255, 255, 0.04);
+    --layout-catering-modal-row-link-neutral-hover-background: rgba(255, 255, 255, 0.07);
+    --uni-modal-meta-text-color: var(--brand-red);
+    --layout-newsletter-border-top: 4px solid #2d6a4f;
+    --layout-newsletter-modal-form-input-color: #1a1a18;
+    --layout-newsletter-modal-form-input-background: rgba(255, 255, 255, 0.05);
+    --layout-newsletter-modal-form-input-focus-border-color: #1a1a18;
+    --layout-newsletter-modal-form-btn-color: #f5f0e8;
+    --layout-promo-modal-dynamic-title-text-shadow: 0 4px 30px rgba(255, 255, 255, 0.15);
+    --layout-promo-modal-dynamic-desc-color: #4a4a40;
+    --layout-promo-modal-promo-cta-box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    --layout-promo-modal-promo-cta-color: #1a1a18;
+    --layout-promo-modal-promo-cta-hover-box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+    --layout-alert-modal-dismiss-btn-color: #1a1a18;
+    --layout-alert-modal-dismiss-btn-hover-background: rgba(255, 255, 255, 0.05);
+    --alert-banner-border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    --alert-banner-background: #f0e8e8;
+    --banner-badge-color: #1a1a18;
+    --banner-close-color: #1a1a18;
+}
+
+:root.lunch-mode .hero-content {
+    color: #f5f0e8;
+}
+
+:root.lunch-mode .hero-btn.secondary {
+    background: rgba(245, 240, 232, 0.15);
+}
+
+:root.lunch-mode .badge {
+    color: #f5f0e8;
+}
+
+@media (max-width: 768px) {
+    :root.lunch-mode #menu-toggle.active .bar {
+        background-color: #000000;
+    }
+}
+
+:root.lunch-mode .catering-pre-title {
+    opacity: 0.85;
+}
+
+:root.lunch-mode header.scrolled nav a {
+    color: var(--text-white);
+}
+
+:root.lunch-mode header.scrolled .bar {
+    background-color: var(--text-white);
+}
+
+@media (max-width: 768px) {
+    :root.lunch-mode header.scrolled #menu-toggle .bar {
+        background-color: #000000;
+    }
+}
+
+:root.lunch-mode .catering-btn-group .hero-btn.primary {
+    background: #f5f0e8;
+    color: #1a1a18;
+}
+
+:root.lunch-mode .catering-btn-group .hero-btn.primary:hover {
+    background: var(--brand-red);
+    color: #f5f0e8;
+}
+
+:root.lunch-mode .catering-btn-group .hero-btn.secondary {
+    border-color: rgba(245, 240, 232, 0.5);
+    color: #f5f0e8;
+    background: transparent;
+}
+
+:root.lunch-mode .catering-btn-group .hero-btn.secondary:hover {
+    background: rgba(245, 240, 232, 0.15);
+    border-color: #f5f0e8;
 }

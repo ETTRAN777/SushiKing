@@ -1,7 +1,6 @@
 (function () {
     if (!window.SushiKingLunchMode) return;
 
-    const themeLink = document.getElementById('main-theme');
     const storedOverride = window.SushiKingLunchMode.getStoredOverride();
     window.SushiKingLunchMode.storedOverride = storedOverride;
 
@@ -11,8 +10,7 @@
             ? false
             : window.SushiKingLunchMode.isLunchTime();
 
-    if (!themeLink) return;
-
-    themeLink.setAttribute('href', lunchModeActive ? 'altStyles.css' : 'styles.css');
+    // Applied immediately (before first paint) to avoid a flash of the wrong
+    // theme — styles.css keys off this class via `:root.lunch-mode` overrides.
     document.documentElement.classList.toggle('lunch-mode', lunchModeActive);
 })();

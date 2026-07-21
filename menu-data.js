@@ -149,10 +149,10 @@ const sushiKingMenu = [
         basePrice: 16.95,
         extraProteinPrice: 4.00,
         structure: {
-            step1_base: ["Sushi Rice", "Brown Rice", "Fresh Spring Mix Salad"],
-            step2_protein: ["Tuna", "Salmon", "Yellowtail", "Crab Stick Salad", "Eel", "Shrimp Tempura"],
-            step3_toppings: ["Edamame", "Scallion", "Avocado", "Cucumber", "Mango", "Crispy Flakes", "Pineapple", "Sesame Seeds", "Furikake", "Seaweed Salad", "Fish Roe", "Corn", "Ginger", "Wasabi"],
-            step4_sauces: ["Poke Sauce", "Spicy Mayo", "Eel Sauce", "Wasabi Yuzu", "Honey Wasabi"]
+            step1_base: [{ name: "Sushi Rice", popular: true}, "Brown Rice", "Fresh Spring Mix Salad"],
+            step2_protein: [{name: "Tuna", popular: true}, "Salmon", "Yellowtail", "Crab Stick Salad", "Eel", {name: "Shrimp Tempura", popular: true}],
+            step3_toppings: ["Edamame", {name: "Scallion", popular: true}, "Avocado", "Cucumber", "Mango", "Crispy Flakes", "Pineapple", {name: "Sesame Seeds", popular: true}, "Furikake", "Seaweed Salad", "Fish Roe", "Corn", "Ginger", "Wasabi"],
+            step4_sauces: ["Poke Sauce", { name: "Spicy Mayo", popular: true }, { name: "Eel Sauce", popular: true }, "Wasabi Yuzu", "Honey Wasabi"]
         }
     },
     {

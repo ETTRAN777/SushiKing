@@ -120,6 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function renderPill(x) {
+    const isPopular = typeof x === 'object' && x.popular;
+    const label = typeof x === 'object' ? x.name : x;
+    return `<span class="${isPopular ? 'popular' : ''}">${label}</span>`;
+}
+
     // Method B: Generate and Inject Dynamic Content Component Elements
     function renderMenuArena() {
         const currentData = sushiKingMenu[activeCategoryIndex];
@@ -144,21 +150,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Use the cart-sync helper if available so a card that's already
                 // in the basket renders with its [ - qty + ] stepper + trash icon
                 // instead of resetting back to "+ Add" on every tab switch.
-                const controlMarkup = (typeof window.getMenuItemControlMarkup === 'function')
-                    ? window.getMenuItemControlMarkup(item.name, item.price)
-                    : `<button class="add-to-cart-btn" data-name="${item.name}" data-price="${item.price}">+ Add</button>`;
-
                 return `
-        <div class="menu-card animate-fade-in">
-            <div class="menu-card-header">
-                <h3>${item.name}</h3>
-                <div class="menu-item-info-row" data-item-name="${item.name}" data-item-price="${item.price}">
-                ${controlMarkup}
-            </div>
-        </div>
-            ${item.description ? `<p class="menu-item-description">${item.description}</p>` : '<br><br>'}
-            <span class="price-tag">$${item.price.toFixed(2)}</span>
-        </div>
+<div class="menu-card animate-fade-in">
+    <div class="menu-card-header">
+        <h3>${item.name}</h3>
+        <span class="price-tag">$${item.price.toFixed(2)}</span>
+    </div>
+    ${item.description ? `<p class="menu-item-description">${item.description}</p>` : '<br><br>'}
+</div>
     `;
             }).join('');
 
@@ -192,19 +191,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="poke-steps-grid">
                         <div class="poke-step-col">
                             <h5><span>1</span> Choose Base</h5>
-                            <ul>${currentData.structure.step1_base.map(x => `<li>${x}</li>`).join('')}</ul>
+                            <div class="pill-cloud">${currentData.structure.step1_base.map(renderPill).join('')}</div>
                         </div>
                         <div class="poke-step-col">
                             <h5><span>2</span> Choose Protein</h5>
-                            <ul>${currentData.structure.step2_protein.map(x => `<li>${x}</li>`).join('')}</ul>
+                            <div class="pill-cloud">${currentData.structure.step2_protein.map(renderPill).join('')}</div>
                         </div>
                         <div class="poke-step-col">
                             <h5><span>3</span> Mix-ins & Toppings</h5>
-                            <div class="pill-cloud">${currentData.structure.step3_toppings.map(x => `<span>${x}</span>`).join('')}</div>
+                            <div class="pill-cloud">${currentData.structure.step3_toppings.map(renderPill).join('')}</div>
                         </div>
                         <div class="poke-step-col">
                             <h5><span>4</span> Select Sauces</h5>
-                            <div class="pill-cloud sauces">${currentData.structure.step4_sauces.map(x => `<span>${x}</span>`).join('')}</div>
+                            <div class="pill-cloud">${currentData.structure.step4_sauces.map(renderPill).join('')}</div>
                         </div>
                     </div>
                 </div>
@@ -258,9 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Fetch dynamic config JSON blueprint architecture
     fetch('modal-config.json')
         .then(res => { if (!res.ok) throw new Error(); return res.json(); })
-        .then(data => { 
-            modalDatabase = data; 
-            
+        .then(data => {
+            modalDatabase = data;
+
             // Helper utility to read a specific cookie value by its key name
             const getCookie = (name) => {
                 const value = `; ${document.cookie}`;
@@ -335,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Abstract Action Component Generator Matrix
     const renderActionButtons = (actions, elevatedId) => {
         if (!actions || !actions.length) return '';
-        
+
         return actions.map(act => {
             // ELEMENT CLASS A: Option Rows Layout Schema (Catering Model)
             if (act.type === 'row-item') {
@@ -388,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Attach specific unique class look modifier pattern to wrapper box
             wrapper.className = 'uni-modal-wrapper ' + profile.layoutType;
-            
+
             // Re-render HTML nodes inside memory instantly
             container.innerHTML = `
                 <span class="modal-dynamic-badge">${profile.badgeText}</span>
@@ -401,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ${profile.metaText ? `<span class="uni-modal-meta-text">${profile.metaText}</span>` : ''}
             `;
-            
+
             // Paint layout visible
             overlay.classList.add('active');
             overlay.setAttribute('aria-hidden', 'false');
@@ -434,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetTypeToken = targetBtn.getAttribute('data-modal-target');
             const targetElevationId = targetBtn.getAttribute('data-modal-elevate');
-            
+
             window.UniversalModalEngine.open(targetTypeToken, targetElevationId);
         }
     });
@@ -448,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const banner = document.getElementById('global-alert-banner');
     const closeBtn = document.getElementById('close-banner-btn');
-    
+
     if (banner && closeBtn) {
         closeBtn.addEventListener('click', () => {
             banner.classList.add('hidden');
@@ -473,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
                 // Unobserve prevents the browser from recycling animations if a user scrolls back up
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);

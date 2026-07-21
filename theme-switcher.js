@@ -1,11 +1,11 @@
 // ==========================================================================
 // SUSHI KING — LUNCH MODE CONTROLLER
-// Controls lunch-mode override, theme stylesheet choice, and logo behavior.
+// Controls lunch-mode override and logo behavior.
+// Theme colors now live entirely in styles.css as CSS variables, switched
+// via the "lunch-mode" class on <html> — no separate stylesheet to swap.
 // ==========================================================================
 (function () {
     const LUNCH_MODE_KEY = 'sushiKingLunchModeOverride';
-    const LIGHT_THEME_FILE = 'altStyles.css';
-    const DARK_THEME_FILE = 'styles.css';
     const LOGO_LIGHT = 'assets/horizontalVerWhite.png';
     const LOGO_DARK = 'assets/horizontalVerBlack.png';
 
@@ -84,30 +84,22 @@
             : 'translateY(-50%)';
     }
 
-    function applyLunchMode(isLunchMode, themeLink, navLogo, navbar, themeToggle, toggleThumb) {
-        if (!themeLink) return;
-
-        const hrefValue = isLunchMode ? LIGHT_THEME_FILE : DARK_THEME_FILE;
-        if (themeLink.getAttribute('href') !== hrefValue) {
-            themeLink.setAttribute('href', hrefValue);
-        }
-
+    function applyLunchMode(isLunchMode, navLogo, navbar, themeToggle, toggleThumb) {
         document.documentElement.classList.toggle('lunch-mode', isLunchMode);
         setToggleState(isLunchMode, themeToggle, toggleThumb);
         updateLogo(navLogo, navbar);
     }
 
     function initializeLunchMode() {
-        const themeLink = document.getElementById('main-theme');
         const themeToggle = document.getElementById('theme-toggle');
         const toggleThumb = document.getElementById('toggle-thumb');
         const navLogo = document.querySelector('.nav-brand-logo');
         const navbar = document.getElementById('navbar');
 
-        if (!themeLink || !navLogo || !navbar) return;
+        if (!navLogo || !navbar) return;
 
         const lunchModeActive = isLunchModeActive();
-        applyLunchMode(lunchModeActive, themeLink, navLogo, navbar, themeToggle, toggleThumb);
+        applyLunchMode(lunchModeActive, navLogo, navbar, themeToggle, toggleThumb);
 
         window.addEventListener('scroll', () => {
             if (document.documentElement.classList.contains('lunch-mode')) {
@@ -119,7 +111,7 @@
             themeToggle.addEventListener('click', () => {
                 const nextLunchMode = !document.documentElement.classList.contains('lunch-mode');
                 setLunchModeOverride(nextLunchMode);
-                applyLunchMode(nextLunchMode, themeLink, navLogo, navbar, themeToggle, toggleThumb);
+                applyLunchMode(nextLunchMode, navLogo, navbar, themeToggle, toggleThumb);
             });
         }
     }

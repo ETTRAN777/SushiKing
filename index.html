@@ -3,7 +3,6 @@
 
 <head>
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="altStyles.css" as="style">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +28,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sushi King | Rochester Hills, MI">
-    <meta name="twitter:description" 
+    <meta name="twitter:description"
         content="Artisan sushi, specialty rolls & poke bowls crafted with premium fresh ingredients. Order online or visit us in Rochester Hills.">
     <meta name="twitter:image" content="https://ettran777.github.io/SushiKing/assets/sushiKingOGImage.png">
 
@@ -60,6 +59,13 @@
   "priceRange": "$$",
   "menu": "https://www.sushikingmi.com/menu.html#main-menu",
   "acceptsReservations": false,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "134",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "147 W Auburn Rd",
@@ -154,6 +160,7 @@
             <a href="#story">Our Story</a>
             <a href="#featured">Featured Rolls</a>
             <a href="menu.html">Menu</a>
+            <a href="#reviews">Reviews</a>
             <a href="#catering">Catering</a>
             <a href="#hours">Hours & Contact</a>
         </nav>
@@ -174,6 +181,7 @@
                 <a href="#story" class="mobile-link">Our Story</a>
                 <a href="#featured" class="mobile-link">Featured Rolls</a>
                 <a href="menu.html" class="mobile-link">Menu</a>
+                <a href="#reviews" class="mobile-link">Reviews</a>
                 <a href="#catering" class="mobile-link">Catering</a>
                 <a href="#hours" class="mobile-link">Hours & Contact</a>
             </div>
@@ -188,12 +196,15 @@
 
         <div class="hero-content">
             <span class="hero-sub">Welcome to Sushi King</span>
-            <h1>CRAFTED FOR THE CROWN</h1>
+            <h1>CRAFTED FOR THE CROWN <span class="sr-only">— Sushi King, Japanese Restaurant & Sushi Bar in Rochester
+                    Hills, MI</span></h1>
             <p>Experience artisan precision in every single creation.</p>
             <div class="hero-actions">
                 <a href="menu.html" class="hero-btn primary">Explore Menu</a>
                 <a href="#hours" class="hero-btn secondary">Hours & Location</a>
             </div>
+            <p class="hero-order-note sr-only">Order direct at sushikingmi.com — no third-party markup, and your order goes
+                straight to our kitchen.</p>
         </div>
     </section>
 
@@ -265,6 +276,60 @@
     </section>
 
 
+    <section id="reviews" class="reviews-section reveal-on-scroll delay-100" style="scroll-margin-top: 70px;">
+        <div class="section-header">
+            <span class="tagline">What Our Guests Say</span>
+            <h2>Loved by Rochester Hills</h2>
+            <div class="brand-divider"></div>
+            <div class="reviews-rating-summary">
+                <span class="reviews-score">4.9</span>
+                <span class="reviews-stars" aria-hidden="true">★★★★★</span>
+                <span class="reviews-count">from 134 Google Reviews</span>
+            </div>
+        </div>
+
+        <div class="reviews-grid">
+            <!-- TODO: replace each quote below with a real review you've selected from Google -->
+            <a href="https://maps.app.goo.gl/esLVZ8RGGNcTuCfF7" target="_blank" rel="noopener" class="review-card">
+                <div class="review-stars" aria-hidden="true">★★★★★</div>
+                <p class="review-quote">"Genuinely best sushi my fiancé and I have EVER had. We were looking for something for date night a saw this place not expecting friendly people, great service, and AMAZING food. We've been raving about it all night. The food was perfect temp and the flavors blended so well. We have no complaints. We will 100% be coming back here again."</p>
+                <div class="review-author-row">
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjWWwlDQwaUcp6ZA3seug1bMQUaNShvsjuLg_0G8T_mPFQ0J0KW8Yw=w32-h32-p-rp-mo-br100" alt="" class="review-avatar" loading="lazy"
+                        onerror="this.style.display='none'">
+                    <span class="review-author">— Cynthia M.</span>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/TzMPEjevjAyPXUpE9" target="_blank" rel="noopener" class="review-card">
+                <div class="review-stars" aria-hidden="true">★★★★★</div>
+                <p class="review-quote">"Sushi King is one of those places that doesn’t need luxury to stand out. It’s small, simple, and cozy, but what truly matters is on the plate: incredible sushi, fresh and full of flavor. You don’t go there for the looks—you go because every roll is absolutely worth it. Without a doubt, it’s one of those spots that quietly earns its place as a favorite."</p>
+                <div class="review-author-row">
+                    <img src="" alt="" class="review-avatar" loading="lazy"
+                        onerror="this.style.display='none'">
+                    <span class="review-author">— Emmanuel S.</span>
+                </div>
+            </a>
+
+            <a href="https://maps.app.goo.gl/1rURQuuETWeeQfzB7" target="_blank" rel="noopener" class="review-card">
+                <div class="review-stars" aria-hidden="true">★★★★★</div>
+                <p class="review-quote">"Unassuming little sushi shop that is absolutely deserving of its high rating. The Tengo roll had an incredibly pleasant, even set of flavors, and the texture using soy paper instead of seaweed made it completely melt in my mouth. The spicy sauce was not over the top whatsoever, and perfectly complemented the fresh fish, warm rice, and crunchy jalapeños.
+The tuna roll was equally as satisfying, there is nowhere to hide anything but the freshest flavor with such a basic roll and this one did not disappoint.
+The gyoza were deep fried, not pan-fried, so flaky/chewy crisp. The tea was delightfully aromatic and nicely presented in their single-serve Japanese teapot.
+Great spot; I’ll be back."</p>
+                <div class="review-author-row">
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjUJEyYTl0BCbO6NypUKhzI9n5HNWTuTuuT3Z_gh8_HWFbiglilr=w32-h32-p-rp-mo-ba12-br100" alt="" class="review-avatar" loading="lazy"
+                        onerror="this.style.display='none'">
+                    <span class="review-author">— Josiah L.</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="reviews-footer">
+            <a href="https://www.google.com/maps/place/Sushi+King/@42.6354707,-83.1371222,17z/data=!4m8!3m7!1s0x8824c3cbfa899843:0xe7f655df07456b58!8m2!3d42.6354707!4d-83.1345419!9m1!1b1!16s%2Fg%2F11sr_yr388?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank" rel="noopener" class="hero-btn secondary">Read All 134 Reviews on Google</a>
+        </div>
+    </section>
+
     <section id="catering" class="catering-section reveal-on-scroll delay-100" style="scroll-margin-top: 70px;">
         <div class="catering-overlay-dim"></div>
         <div class="catering-inner-content">
@@ -316,7 +381,8 @@
             </div>
         </div>
         <div class="light-dark-mode-toggle">
-            <button id="theme-toggle" type="button" class="toggle-btn" aria-label="Toggle Light/Dark Mode" aria-pressed="false">
+            <button id="theme-toggle" type="button" class="toggle-btn" aria-label="Toggle Light/Dark Mode"
+                aria-pressed="false">
                 <span class="toggle-bg"></span>
                 <span class="toggle-emoji toggle-sun" aria-hidden="true"></span>
                 <span class="toggle-emoji toggle-moon" aria-hidden="true"></span>
