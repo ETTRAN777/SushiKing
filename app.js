@@ -479,3 +479,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealTargets.forEach(target => scrollRevealObserver.observe(target));
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const heroVideo = document.getElementById('hero-video');
+    if (!heroVideo) return;
+
+    const playlist = [
+        'assets/8902084-hd_1920_1080_25fps.mp4', // garnishing (starting clip)
+        'assets/8901916-hd_1920_1080_25fps.mp4', // slicing salmon
+        'assets/8901999-hd_1920_1080_25fps.mp4'  // topping sushi
+    ];
+    let index = 0; // hero starts on the garnish clip already loaded via src above
+
+    heroVideo.addEventListener('ended', () => {
+        heroVideo.classList.add('fading');
+
+        setTimeout(() => {
+            index = (index + 1) % playlist.length;
+            heroVideo.src = playlist[index];
+            heroVideo.play();
+            heroVideo.classList.remove('fading');
+        }, 600); // matches the CSS transition duration
+    });
+});
