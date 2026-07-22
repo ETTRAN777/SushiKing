@@ -121,10 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderPill(x) {
-    const isPopular = typeof x === 'object' && x.popular;
-    const label = typeof x === 'object' ? x.name : x;
-    return `<span class="${isPopular ? 'popular' : ''}">${label}</span>`;
-}
+        const isPopular = typeof x === 'object' && x.popular;
+        const label = typeof x === 'object' ? x.name : x;
+        return `<span class="${isPopular ? 'popular' : ''}">${label}</span>`;
+    }
 
     // Method B: Generate and Inject Dynamic Content Component Elements
     function renderMenuArena() {
@@ -501,5 +501,108 @@ document.addEventListener('DOMContentLoaded', () => {
             heroVideo.play();
             heroVideo.classList.remove('fading');
         }, 600); // matches the CSS transition duration
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('reviews-track');
+    const prevBtn = document.querySelector('.carousel-nav.prev');
+    const nextBtn = document.querySelector('.carousel-nav.next');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const AUTO_ROTATE_DELAY = 4500; // ms between automatic slides
+    let autoRotateTimer = null;
+
+    function cardScrollDistance() {
+        const card = track.querySelector('.review-card');
+        if (!card) return 320;
+        const style = window.getComputedStyle(track);
+        const gap = parseFloat(style.columnGap || style.gap || 30);
+        return card.getBoundingClientRect().width + gap;
+    }
+
+    function isAtStart() {
+        return track.scrollLeft <= 2;
+    }
+
+    function isAtEnd() {
+        return track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    }
+
+    function goNext() {
+        if (isAtEnd()) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            track.scrollBy({ left: cardScrollDistance(), behavior: 'smooth' });
+        }
+    }
+
+    function goPrev() {
+        if (isAtStart()) {
+            track.scrollTo({ left: track.scrollWidth - track.clientWidth, behavior: 'smooth' });
+        } else {
+            track.scrollBy({ left: -cardScrollDistance(), behavior: 'smooth' });
+        }
+    }
+
+    function startAutoRotate() {
+        stopAutoRotate();
+        autoRotateTimer = setInterval(goNext, AUTO_ROTATE_DELAY);
+    }
+
+    function stopAutoRotate() {
+        if (autoRotateTimer) clearInterval(autoRotateTimer);
+    }
+
+    function restartAutoRotate() {
+        // Called after a manual interaction — pause briefly, then resume auto-play
+        startAutoRotate();
+    }
+
+    prevBtn.addEventListener('click', () => {
+        goPrev();
+        restartAutoRotate();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        goNext();
+        restartAutoRotate();
+    });
+
+    // Pause while the user is actively looking (hover on desktop, touch on mobile)
+    track.addEventListener('pointerenter', stopAutoRotate);
+    track.addEventListener('pointerleave', startAutoRotate);
+    track.addEventListener('touchstart', stopAutoRotate, { passive: true });
+    track.addEventListener('touchend', () => setTimeout(startAutoRotate, AUTO_ROTATE_DELAY), { passive: true });
+
+    startAutoRotate();
+
+    // Only show "Read more" on quotes that actually got clamped
+    track.querySelectorAll('.review-quote').forEach(quote => {
+        if (quote.scrollHeight > quote.clientHeight + 1) {
+            const toggle = quote.nextElementSibling;
+            if (toggle && toggle.classList.contains('review-quote-toggle')) {
+                toggle.style.display = 'inline-block';
+            }
+        }
+    });
+
+    track.addEventListener('click', (e) => {
+        const quoteToggle = e.target.closest('.review-quote-toggle');
+        if (quoteToggle) {
+            e.preventDefault();
+            e.stopPropagation();
+            const quote = quoteToggle.previousElementSibling;
+            const expanded = quote.classList.toggle('expanded');
+            quoteToggle.textContent = expanded ? 'Show less' : 'Read more';
+            return;
+        }
+
+        const replyToggle = e.target.closest('.review-owner-reply-toggle');
+        if (replyToggle) {
+            e.preventDefault();
+            e.stopPropagation();
+            replyToggle.closest('.review-owner-reply').classList.toggle('open');
+        }
     });
 });
