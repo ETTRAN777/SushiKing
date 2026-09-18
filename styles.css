@@ -79,24 +79,30 @@
     --uni-modal-overlay-background: rgba(4, 4, 5, 0.85);
     --uni-modal-wrapper-box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
     --uni-modal-wrapper-background: #0d0d0f;
+    --uni-modal-wrapper-border: 1px solid rgba(255, 255, 255, 0.08);
+    --close-uni-modal-color: rgba(255, 255, 255, 0.35);
     --close-uni-modal-hover-background: rgba(255, 255, 255, 0.05);
     --layout-catering-modal-row-link-accented-color: #ffffff;
     --layout-catering-modal-row-link-accented-hover-box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
     --layout-catering-modal-row-link-neutral-border: 1px solid rgba(255, 255, 255, 0.06);
     --layout-catering-modal-row-link-neutral-background: rgba(255, 255, 255, 0.03);
     --layout-catering-modal-row-link-neutral-hover-background: rgba(255, 255, 255, 0.06);
+    --layout-catering-modal-row-link-neutral-hover-border-color: rgba(255, 255, 255, 0.12);
     --uni-modal-meta-text-color: rgba(255, 255, 255, 0.3);
-    --layout-newsletter-border-top: 4px solid #ffffff;
+    --layout-newsletter-border-top: 4px solid #dc2626;
     --layout-newsletter-modal-form-input-color: #ffffff;
     --layout-newsletter-modal-form-input-background: rgba(255, 255, 255, 0.04);
+    --layout-newsletter-modal-form-input-border: 1px solid rgba(255, 255, 255, 0.08);
     --layout-newsletter-modal-form-input-focus-border-color: #ffffff;
     --layout-newsletter-modal-form-btn-color: #070708;
+    --layout-newsletter-modal-form-btn-background: var(--text-white); /* white in dark, ink in Lunch Mode */
     --layout-promo-modal-dynamic-title-text-shadow: 0 4px 30px rgba(220, 38, 38, 0.15);
     --layout-promo-modal-dynamic-desc-color: #d4d4d8;
     --layout-promo-modal-promo-cta-box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
     --layout-promo-modal-promo-cta-color: #ffffff;
     --layout-promo-modal-promo-cta-hover-box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
     --layout-alert-modal-dismiss-btn-color: #ffffff;
+    --layout-alert-modal-dismiss-btn-border: 1px solid rgba(255, 255, 255, 0.08);
     --layout-alert-modal-dismiss-btn-hover-background: rgba(255, 255, 255, 0.04);
     --alert-banner-border-bottom: 1px solid rgba(220, 38, 38, 0.3);
     --alert-banner-background: #1a1515;
@@ -252,6 +258,9 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    /* Fixed black (not a theme variable): this is what shows through when the
+       video fades out between clips, and it must stay black in Lunch Mode too. */
+    background-color: #000;
 }
 
 .hero-video {
@@ -606,6 +615,37 @@ nav a:hover {
     display: flex;
     align-items: center;
     z-index: 5;
+}
+
+.footer-promo-btn {
+    position: absolute;
+    left: 5%;
+    bottom: 1.5rem;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    height: 38px; /* matches #theme-toggle so the two sit on the same baseline */
+    padding: 0;
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-gray);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer-promo-btn:hover {
+    color: var(--brand-red);
+}
+
+.footer-promo-btn:focus-visible {
+    outline: 2px solid var(--brand-red);
+    outline-offset: 4px;
+    border-radius: 2px;
 }
 
 #theme-toggle {
@@ -1939,6 +1979,7 @@ header.force-scrolled {
     width: 100%;
     height: 100%;
     background: var(--uni-modal-overlay-background);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
@@ -1958,7 +1999,7 @@ header.force-scrolled {
 .uni-modal-wrapper {
     position: relative;
     background: var(--uni-modal-wrapper-background);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: var(--uni-modal-wrapper-border);
     border-radius: 8px;
     padding: 3.5rem 2.5rem 2.5rem 2.5rem;
     box-shadow: var(--uni-modal-wrapper-box-shadow);
@@ -1978,7 +2019,7 @@ header.force-scrolled {
     right: 1.25rem;
     background: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--close-uni-modal-color);
     font-size: 1.5rem;
     font-weight: 200;
     line-height: 1;
@@ -2075,7 +2116,7 @@ header.force-scrolled {
 
 .layout-catering .modal-row-link.neutral:hover {
     background: var(--layout-catering-modal-row-link-neutral-hover-background);
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: var(--layout-catering-modal-row-link-neutral-hover-border-color);
 }
 
 .modal-row-text {
@@ -2128,7 +2169,7 @@ header.force-scrolled {
 .layout-newsletter .modal-form-input {
     flex: 1;
     background: var(--layout-newsletter-modal-form-input-background);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: var(--layout-newsletter-modal-form-input-border);
     padding: 1rem;
     color: var(--layout-newsletter-modal-form-input-color);
     font-family: var(--font-body);
@@ -2143,7 +2184,7 @@ header.force-scrolled {
 }
 
 .layout-newsletter .modal-form-btn {
-    background: #ffffff;
+    background: var(--layout-newsletter-modal-form-btn-background);
     color: var(--layout-newsletter-modal-form-btn-color);
     padding: 0 1.75rem;
     font-weight: 600;
@@ -2225,7 +2266,7 @@ header.force-scrolled {
 .layout-alert .modal-dismiss-btn {
     width: 100%;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: var(--layout-alert-modal-dismiss-btn-border);
     color: var(--layout-alert-modal-dismiss-btn-color);
     font-weight: 500;
     text-transform: uppercase;
@@ -2424,28 +2465,33 @@ header.force-scrolled {
     --catering-pre-title-color: #f5f0e8;
     --catering-inner-content-h2-color: #f5f0e8;
     --catering-inner-content-p-color: rgba(245, 240, 232, 0.8);
-    --uni-modal-overlay-background: rgba(245, 240, 232, 0.95);
-    --uni-modal-wrapper-box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+    --uni-modal-overlay-background: rgba(26, 26, 24, 0.22);
+    --uni-modal-wrapper-box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
     --uni-modal-wrapper-background: #f5f0e8;
-    --close-uni-modal-hover-background: rgba(255, 255, 255, 0.06);
+    --uni-modal-wrapper-border: 1px solid rgba(26, 26, 24, 0.18);
+    --close-uni-modal-color: rgba(26, 26, 24, 0.55);
+    --close-uni-modal-hover-background: rgba(26, 26, 24, 0.06);
     --layout-catering-modal-row-link-accented-color: #1a1a18;
-    --layout-catering-modal-row-link-accented-hover-box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
-    --layout-catering-modal-row-link-neutral-border: 1px solid rgba(255, 255, 255, 0.07);
-    --layout-catering-modal-row-link-neutral-background: rgba(255, 255, 255, 0.04);
-    --layout-catering-modal-row-link-neutral-hover-background: rgba(255, 255, 255, 0.07);
+    --layout-catering-modal-row-link-accented-hover-box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    --layout-catering-modal-row-link-neutral-border: 1px solid rgba(26, 26, 24, 0.14);
+    --layout-catering-modal-row-link-neutral-background: rgba(26, 26, 24, 0.03);
+    --layout-catering-modal-row-link-neutral-hover-background: rgba(26, 26, 24, 0.06);
+    --layout-catering-modal-row-link-neutral-hover-border-color: rgba(26, 26, 24, 0.24);
     --uni-modal-meta-text-color: var(--brand-red);
-    --layout-newsletter-border-top: 4px solid #2d6a4f;
+    --layout-newsletter-border-top: 4px solid #dc2626;
     --layout-newsletter-modal-form-input-color: #1a1a18;
-    --layout-newsletter-modal-form-input-background: rgba(255, 255, 255, 0.05);
+    --layout-newsletter-modal-form-input-background: var(--bg-card);
+    --layout-newsletter-modal-form-input-border: 1px solid rgba(26, 26, 24, 0.2);
     --layout-newsletter-modal-form-input-focus-border-color: #1a1a18;
     --layout-newsletter-modal-form-btn-color: #f5f0e8;
-    --layout-promo-modal-dynamic-title-text-shadow: 0 4px 30px rgba(255, 255, 255, 0.15);
+    --layout-promo-modal-dynamic-title-text-shadow: none;
     --layout-promo-modal-dynamic-desc-color: #4a4a40;
-    --layout-promo-modal-promo-cta-box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    --layout-promo-modal-promo-cta-box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
     --layout-promo-modal-promo-cta-color: #1a1a18;
-    --layout-promo-modal-promo-cta-hover-box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+    --layout-promo-modal-promo-cta-hover-box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
     --layout-alert-modal-dismiss-btn-color: #1a1a18;
-    --layout-alert-modal-dismiss-btn-hover-background: rgba(255, 255, 255, 0.05);
+    --layout-alert-modal-dismiss-btn-hover-background: rgba(26, 26, 24, 0.05);
+    --layout-alert-modal-dismiss-btn-border: 1px solid rgba(26, 26, 24, 0.3);
     --alert-banner-border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     --alert-banner-background: #f0e8e8;
     --banner-badge-color: #1a1a18;

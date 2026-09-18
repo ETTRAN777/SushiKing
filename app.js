@@ -238,6 +238,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }, { passive: false });
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const track = document.getElementById('reviews-track');
+        if (!track) return;
+
+        track.addEventListener('wheel', (e) => {
+            const isTrackpadHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+
+            if (isTrackpadHorizontal) {
+                e.preventDefault();
+                track.scrollLeft += e.deltaX;
+            } else {
+                const canScrollLeft = track.scrollLeft > 0;
+                const canScrollRight = track.scrollLeft < (track.scrollWidth - track.clientWidth - 1);
+
+                if ((e.deltaY < 0 && canScrollLeft) || (e.deltaY > 0 && canScrollRight)) {
+                    e.preventDefault();
+                    track.scrollLeft += e.deltaY;
+                }
+            }
+        }, { passive: false });
+    });
 });
 
 // ==========================================================================
@@ -260,61 +282,61 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             modalDatabase = data;
 
-            // Helper utility to read a specific cookie value by its key name
-            const getCookie = (name) => {
-                const value = `; ${document.cookie}`;
-                const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-            };
-
-            // 🚀 AUTO-MODAL QUEUE BUILDER
-            // Collects all [data-auto-modal] markers on the page, cross-references
-            // each against the config database, filters out already-seen modals,
-            // then sorts by firingOrder (lowest first) to build a priority queue.
-            const autoModalMarkers = document.querySelectorAll('[data-auto-modal]');
-
-            const autoQueue = Array.from(autoModalMarkers)
-                .map(marker => {
-                    const typeToken = marker.getAttribute('data-auto-modal');
-                    const config = modalDatabase[typeToken];
-
-                    // Skip if no config entry or no autoTrigger block defined
-                    if (!config || !config.autoTrigger) return null;
-
-                    const seenVersion = getCookie(`promo_shown_${typeToken}`);
-                    const isSuppressed = seenVersion === APP_VERSION;
-
-                    // Skip if user has already seen this version
-                    if (isSuppressed) return null;
-
-                    return {
-                        typeToken,
-                        firingOrder: config.autoTrigger.firingOrder ?? 99,
-                        delay: config.autoTrigger.delay ?? 1500,
-                        cookieMaxAge: config.autoTrigger.cookieMaxAge ?? 86400
-                    };
-                })
-                .filter(Boolean)
-                .sort((a, b) => a.firingOrder - b.firingOrder);
-
             // Kick off the queue — each modal fires its own delay after the previous
             // one is dismissed. The queue reference is stored on window so close()
             // can advance it after each dismissal.
-            window._autoModalQueue = autoQueue;
+            window._autoModalQueue = buildAutoQueue();
             window._autoModalQueueIndex = 0;
             advanceModalQueue();
         })
         .catch(err => console.error('Dynamic Modal Engine failed to fetch database config profile:', err));
 
-    // Fires the next modal in the auto queue, if any remain
-    function advanceModalQueue() {
+    // Helper utility to read a specific cookie value by its key name
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // 🚀 AUTO-MODAL QUEUE BUILDER
+    // Collects all [data-auto-modal] markers on the page, cross-references
+    // each against the config database, optionally filters out already-seen
+    // modals, then sorts by firingOrder (lowest first) to build a priority queue.
+    // Pass skipSeen=false to get every auto-modal on the page regardless of cookies.
+    function buildAutoQueue(skipSeen = true) {
+        return Array.from(document.querySelectorAll('[data-auto-modal]'))
+            .map(marker => {
+                const typeToken = marker.getAttribute('data-auto-modal');
+                const config = modalDatabase?.[typeToken];
+
+                // Skip if no config entry or no autoTrigger block defined
+                if (!config || !config.autoTrigger) return null;
+
+                // Skip if user has already seen this version
+                if (skipSeen && getCookie(`promo_shown_${typeToken}`) === APP_VERSION) return null;
+
+                return {
+                    typeToken,
+                    firingOrder: config.autoTrigger.firingOrder ?? 99,
+                    delay: config.autoTrigger.delay ?? 1500,
+                    cookieMaxAge: config.autoTrigger.cookieMaxAge ?? 86400
+                };
+            })
+            .filter(Boolean)
+            .sort((a, b) => a.firingOrder - b.firingOrder);
+    }
+
+    // Fires the next modal in the auto queue, if any remain.
+    // { immediate: true } skips the configured delay for the first modal (used by the
+    // footer "Show Promotions" button, where the visitor just asked to see it).
+    function advanceModalQueue({ immediate = false } = {}) {
         const queue = window._autoModalQueue;
         const idx = window._autoModalQueueIndex;
 
         if (!queue || idx >= queue.length) return;
 
         const next = queue[idx];
-        const fireDelay = idx === 0 ? next.delay : Math.floor(next.delay / 2);
+        const fireDelay = immediate ? 0 : (idx === 0 ? next.delay : Math.floor(next.delay / 2));
 
         setTimeout(() => {
             // Only open if no modal is currently active (e.g. user manually opened one)
@@ -406,6 +428,28 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden'; // Freeze frame scroll positioning
         },
+        // Footer "Show Promotions" button: forgets that the visitor dismissed anything and
+        // replays every auto-modal referenced on this page via <div data-auto-modal="...">
+        // (anything with an autoTrigger in modal-config.json), in firingOrder. Each one
+        // re-stamps its own seen-cookie when dismissed, exactly like a normal auto-popup.
+        showPromotions: () => {
+            if (!modalDatabase) return;
+
+            const queue = buildAutoQueue(false);
+            if (!queue.length) {
+                console.warn('Modal Engine: no [data-auto-modal] markers with an autoTrigger on this page.');
+                return;
+            }
+
+            // Expire every seen-cookie (attributes must match how they were set: path=/)
+            queue.forEach(({ typeToken }) => {
+                document.cookie = `promo_shown_${typeToken}=; max-age=0; path=/; SameSite=Strict`;
+            });
+
+            window._autoModalQueue = queue;
+            window._autoModalQueueIndex = 0;
+            advanceModalQueue({ immediate: true });
+        },
         close: () => {
             overlay.classList.remove('active');
             overlay.setAttribute('aria-hidden', 'true');
@@ -428,6 +472,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Global Event Handlers Delegation Loop
     document.body.addEventListener('click', (e) => {
+        if (e.target.closest('[data-show-promotions]')) {
+            window.UniversalModalEngine.showPromotions();
+            return;
+        }
+
         const targetBtn = e.target.closest('[data-modal-target]');
         if (targetBtn) {
             e.preventDefault();

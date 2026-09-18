@@ -30,6 +30,11 @@
     "title": "Unlock VIP Perks",
     "description": "Subscribe to our exclusive mailing list for private event invitations, seasonal chef menu reveals, and birthday promotions.",
     "metaText": "We value your privacy. Opt-out at any time with a single click.",
+    "autoTrigger": {
+      "firingOrder": 2,
+      "delay": 1500,
+      "cookieMaxAge": 86400
+    },
     "actions": [
       {
         "id": "act-subscribe",
